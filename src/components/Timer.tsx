@@ -19,6 +19,7 @@ const Timer: React.FC = () => {
 	const [secondsLeft, setSecondsLeft] = useState(0);
 
 	const isPausedRef = useRef(isPaused);
+	const modeRef = useRef(mode);
 	const secondsLeftRef = useRef(secondsLeft);
 
 	const countdownSeconds = () => {
@@ -27,6 +28,20 @@ const Timer: React.FC = () => {
 	};
 
 	useEffect(() => {
+		const switchMode = () => {
+			const nextMode = modeRef.current === Mode.WORK ? Mode.BREAK : Mode.WORK;
+			const nextSeconds =
+				(nextMode === Mode.WORK
+					? settingsInfo.workMinutes
+					: settingsInfo.breakMinutes) * 60;
+
+			setMode(nextMode);
+			modeRef.current = nextMode;
+
+			setSecondsLeft(nextSeconds);
+			secondsLeftRef.current = nextSeconds;
+		};
+
 		// Initialize timer
 		secondsLeftRef.current = settingsInfo.workMinutes * 60;
 		setSecondsLeft(secondsLeftRef.current);
@@ -34,6 +49,9 @@ const Timer: React.FC = () => {
 		const interval = setInterval(() => {
 			if (isPausedRef.current) {
 				return;
+			}
+			if (secondsLeftRef.current === 0) {
+				return switchMode();
 			}
 			countdownSeconds();
 		}, 1000);
@@ -60,7 +78,7 @@ const Timer: React.FC = () => {
 				text={`${minutes}:${seconds}`}
 				styles={buildStyles({
 					textColor: "#000",
-					pathColor: "red",
+					pathColor: mode === Mode.WORK ? "red" : "green",
 					trailColor: "grey",
 				})}
 			/>
