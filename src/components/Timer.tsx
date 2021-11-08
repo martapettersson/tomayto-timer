@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import SettingsContext from "../context/SettingsContext";
@@ -19,6 +19,13 @@ const Timer: React.FC = () => {
 	const [secondsLeft, setSecondsLeft] = useState(0);
 
 	const isPausedRef = useRef(isPaused);
+	const secondsLeftRef = useRef(secondsLeft);
+
+	useEffect(() => {
+		// Initialize timer
+		secondsLeftRef.current = settingsInfo.workMinutes * 60;
+		setSecondsLeft(secondsLeftRef.current);
+	}, [settingsInfo]);
 
 	const totalSeconds =
 		mode === Mode.WORK
