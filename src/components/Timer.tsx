@@ -1,10 +1,13 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
+import useSound from "use-sound";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import SettingsContext from "../context/SettingsContext";
 import PauseButton from "./PauseButton";
 import PlayButton from "./PlayButton";
 import SettingsButton from "./SettingsButton";
+import breakAlarm from "../assets/break-alarm.mp3";
+import workAlarm from "../assets/work-alarm.mp3";
 
 export enum Mode {
 	WORK = "work",
@@ -21,6 +24,9 @@ const Timer: React.FC = () => {
 	const isPausedRef = useRef(isPaused);
 	const modeRef = useRef(mode);
 	const secondsLeftRef = useRef(secondsLeft);
+
+	const [playBreakAlarm] = useSound(breakAlarm);
+	const [playWorkAlarm] = useSound(workAlarm);
 
 	const countdownSeconds = () => {
 		secondsLeftRef.current--;
@@ -51,13 +57,14 @@ const Timer: React.FC = () => {
 				return;
 			}
 			if (secondsLeftRef.current === 0) {
+				modeRef.current === Mode.WORK ? playBreakAlarm() : playWorkAlarm();
 				return switchMode();
 			}
 			countdownSeconds();
 		}, 1000);
 
 		return () => clearInterval(interval);
-	}, [settingsInfo]);
+	}, [settingsInfo, playBreakAlarm, playWorkAlarm]);
 
 	const totalSeconds =
 		mode === Mode.WORK
