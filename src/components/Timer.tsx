@@ -21,10 +21,24 @@ const Timer: React.FC = () => {
 	const isPausedRef = useRef(isPaused);
 	const secondsLeftRef = useRef(secondsLeft);
 
+	const countdownSeconds = () => {
+		secondsLeftRef.current--;
+		setSecondsLeft(secondsLeftRef.current);
+	};
+
 	useEffect(() => {
 		// Initialize timer
 		secondsLeftRef.current = settingsInfo.workMinutes * 60;
 		setSecondsLeft(secondsLeftRef.current);
+
+		const interval = setInterval(() => {
+			if (isPausedRef.current) {
+				return;
+			}
+			countdownSeconds();
+		}, 1000);
+
+		return () => clearInterval(interval);
 	}, [settingsInfo]);
 
 	const totalSeconds =
