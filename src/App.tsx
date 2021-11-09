@@ -4,20 +4,29 @@ import Settings from "./components/Settings";
 import Timer from "./components/Timer";
 import SettingsContext from "./context/SettingsContext";
 
+export type Cycle = {
+	cycleNumber: number;
+	workMinutes: number;
+	breakMinutes: number;
+};
+
 const App: React.FC = () => {
 	const [showSettings, setShowSettings] = useState(false);
-	const [workMinutes, setWorkMinutes] = useState(45);
-	const [breakMinutes, setBreakMinutes] = useState(15);
+	const [cycles, setCycles] = useState<Cycle[]>([
+		{ cycleNumber: 0, workMinutes: 1, breakMinutes: 1 },
+		{ cycleNumber: 1, workMinutes: 2, breakMinutes: 2 },
+		{ cycleNumber: 2, workMinutes: 3, breakMinutes: 3 },
+		{ cycleNumber: 3, workMinutes: 4, breakMinutes: 4 },
+	]);
+
 	return (
 		<main>
 			<SettingsContext.Provider
 				value={{
 					showSettings,
 					setShowSettings,
-					workMinutes,
-					setWorkMinutes,
-					breakMinutes,
-					setBreakMinutes,
+					cycles,
+					setCycles,
 				}}
 			>
 				{showSettings ? <Settings /> : <Timer />}
