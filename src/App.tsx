@@ -13,10 +13,10 @@ export type Cycle = {
 const App: React.FC = () => {
 	const [showSettings, setShowSettings] = useState(false);
 	const [cycles, setCycles] = useState<Cycle[]>([
-		{ cycleNumber: 0, workMinutes: 1, breakMinutes: 1 },
-		{ cycleNumber: 1, workMinutes: 2, breakMinutes: 2 },
-		{ cycleNumber: 2, workMinutes: 3, breakMinutes: 3 },
-		{ cycleNumber: 3, workMinutes: 4, breakMinutes: 4 },
+		{ cycleNumber: 0, workMinutes: 25, breakMinutes: 5 },
+		{ cycleNumber: 1, workMinutes: 25, breakMinutes: 5 },
+		{ cycleNumber: 2, workMinutes: 25, breakMinutes: 5 },
+		{ cycleNumber: 3, workMinutes: 25, breakMinutes: 20 },
 	]);
 
 	return (

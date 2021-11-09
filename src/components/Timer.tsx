@@ -107,7 +107,7 @@ const Timer: React.FC = () => {
 			}
 
 			countdownSeconds();
-		}, 10);
+		}, 1000);
 
 		return () => clearInterval(interval);
 	}, [settingsInfo, playBreakAlarm, playWorkAlarm, switchMode, endOfSession]);
