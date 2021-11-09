@@ -14,6 +14,7 @@ import PlayButton from "./PlayButton";
 import SettingsButton from "./SettingsButton";
 import breakAlarm from "../assets/break-alarm.mp3";
 import workAlarm from "../assets/work-alarm.mp3";
+import endAlarm from "../assets/end-alarm.mp3";
 
 export enum Mode {
 	WORK = "work",
@@ -35,6 +36,7 @@ const Timer: React.FC = () => {
 
 	const [playBreakAlarm] = useSound(breakAlarm);
 	const [playWorkAlarm] = useSound(workAlarm);
+	const [playEndAlarm] = useSound(endAlarm);
 
 	const countdownSeconds = () => {
 		secondsLeftRef.current--;
@@ -72,7 +74,9 @@ const Timer: React.FC = () => {
 
 		setMode(Mode.WORK);
 		modeRef.current = Mode.WORK;
-	}, []);
+
+		return playEndAlarm();
+	}, [playEndAlarm]);
 
 	useEffect(() => {
 		// Initialize timer
