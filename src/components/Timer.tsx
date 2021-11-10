@@ -38,13 +38,24 @@ const Timer: React.FC = () => {
 	const [playWorkAlarm] = useSound(workAlarm);
 	const [playEndAlarm] = useSound(endAlarm);
 
+	const initializeTimer = useCallback(() => {
+		secondsLeftRef.current =
+			settingsInfo.cycles[cycleNumberRef.current].workMinutes * 60;
+		setSecondsLeft(secondsLeftRef.current);
+	}, [settingsInfo]);
+
 	const countdownSeconds = () => {
 		secondsLeftRef.current--;
 		setSecondsLeft(secondsLeftRef.current);
 	};
 
+	const pauseTimer = (parameter: boolean) => {
+		setIsPaused(parameter);
+		isPausedRef.current = parameter;
+	};
+
 	const switchMode = useCallback(() => {
-		// +1 cycleNumber after break
+		// +1 cycleNumber after break since 1 cycle is done
 		if (modeRef.current === Mode.BREAK) {
 			const nextCycle = cycleNumberRef.current + 1;
 			setCycleNumber(nextCycle);
@@ -66,8 +77,7 @@ const Timer: React.FC = () => {
 	}, [settingsInfo]);
 
 	const endOfSession = useCallback(() => {
-		setIsPaused(true);
-		isPausedRef.current = true;
+		pauseTimer(true);
 
 		setCycleNumber(0);
 		cycleNumberRef.current = 0;
@@ -75,14 +85,13 @@ const Timer: React.FC = () => {
 		setMode(Mode.WORK);
 		modeRef.current = Mode.WORK;
 
+		initializeTimer();
+
 		return playEndAlarm();
-	}, [playEndAlarm]);
+	}, [initializeTimer, playEndAlarm]);
 
 	useEffect(() => {
-		// Initialize timer
-		secondsLeftRef.current =
-			settingsInfo.cycles[cycleNumberRef.current].workMinutes * 60;
-		setSecondsLeft(secondsLeftRef.current);
+		initializeTimer();
 
 		const interval = setInterval(() => {
 			// Timer paused
@@ -110,7 +119,14 @@ const Timer: React.FC = () => {
 		}, 1000);
 
 		return () => clearInterval(interval);
-	}, [settingsInfo, playBreakAlarm, playWorkAlarm, switchMode, endOfSession]);
+	}, [
+		settingsInfo,
+		initializeTimer,
+		playBreakAlarm,
+		playWorkAlarm,
+		switchMode,
+		endOfSession,
+	]);
 
 	// Calculate percentage
 	const totalSeconds: number =
@@ -145,15 +161,13 @@ const Timer: React.FC = () => {
 				{isPaused ? (
 					<PlayButton
 						onClick={() => {
-							setIsPaused(false);
-							isPausedRef.current = false;
+							pauseTimer(false);
 						}}
 					/>
 				) : (
 					<PauseButton
 						onClick={() => {
-							setIsPaused(true);
-							isPausedRef.current = true;
+							pauseTimer(true);
 						}}
 					/>
 				)}
