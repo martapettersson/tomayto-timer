@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import ReactSlider from "react-slider";
 import SettingsContext from "../context/SettingsContext";
+import { Mode } from "./Timer";
 
 type Props = {
 	cycleNumber: number;
@@ -9,6 +10,25 @@ type Props = {
 const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
 	const settingsInfo: any = useContext(SettingsContext);
 	const cycle = settingsInfo.cycles[cycleNumber];
+
+	const updateCycleMinutes =
+		(cycleNumber: number, mode: string) => (value: number) => {
+			const newCycleValue =
+				mode === Mode.WORK
+					? {
+							cycleNumber,
+							workMinutes: value,
+							breakMinutes: cycle.breakMinutes,
+					  }
+					: {
+							cycleNumber,
+							workMinutes: cycle.workMinutes,
+							breakMinutes: value,
+					  };
+			let newCycleArray = [...settingsInfo.cycles];
+			newCycleArray[cycleNumber] = newCycleValue;
+			settingsInfo.setCycles(newCycleArray);
+		};
 
 	return (
 		<div>
@@ -19,6 +39,7 @@ const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
 				thumbClassName="thumb"
 				trackClassName="track"
 				value={cycle.workMinutes}
+				onChange={updateCycleMinutes(cycle.cycleNumber, Mode.WORK)}
 				min={1}
 				max={120}
 			/>
@@ -28,6 +49,7 @@ const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
 				thumbClassName="thumb"
 				trackClassName="track"
 				value={cycle.breakMinutes}
+				onChange={updateCycleMinutes(cycle.cycleNumber, Mode.BREAK)}
 				min={1}
 				max={120}
 			/>
