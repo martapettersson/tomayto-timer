@@ -12,6 +12,8 @@ export type Cycle = {
 
 const App: React.FC = () => {
 	const [showSettings, setShowSettings] = useState(false);
+	const [allWorkMinutes, setAllWorkMinutes] = useState(25);
+	const [allBreakMinutes, setAllBreakMinutes] = useState(5);
 
 	// Classic Pomodoro as default settings
 	const [cycles, setCycles] = useState<Cycle[]>([
@@ -39,6 +41,10 @@ const App: React.FC = () => {
 					setShowSettings,
 					cycles,
 					setCycles,
+					allWorkMinutes,
+					setAllWorkMinutes,
+					allBreakMinutes,
+					setAllBreakMinutes,
 				}}
 			>
 				{showSettings ? <Settings /> : <Timer />}

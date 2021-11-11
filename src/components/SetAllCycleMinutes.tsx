@@ -7,8 +7,10 @@ const SetAllCycleMinutes: React.FC = () => {
 	const settingsInfo: any = useContext(SettingsContext);
 	const cycles = settingsInfo.cycles;
 
-	const [workMinutes, setWorkMinutes] = useState(25);
-	const [breakMinutes, setBreakMinutes] = useState(5);
+	const [workMinutes, setWorkMinutes] = useState(settingsInfo.allWorkMinutes);
+	const [breakMinutes, setBreakMinutes] = useState(
+		settingsInfo.allBreakMinutes
+	);
 
 	const handleOnSubmit = (e: any) => {
 		e.preventDefault();
@@ -19,6 +21,8 @@ const SetAllCycleMinutes: React.FC = () => {
 			cycle.breakMinutes = breakMinutes;
 		}
 
+		settingsInfo.setAllWorkMinutes(workMinutes);
+		settingsInfo.setAllBreakMinutes(breakMinutes);
 		localStorage.setItem("cycles", JSON.stringify(newCycleArray));
 		settingsInfo.setCycles(newCycleArray);
 	};
