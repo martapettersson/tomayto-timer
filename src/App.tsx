@@ -24,13 +24,37 @@ const App: React.FC = () => {
 	]);
 
 	const cyclesRef = useRef(cycles);
+	const allWorkMinutesRef = useRef(allWorkMinutes);
+	const allBreakMinutesRef = useRef(allBreakMinutes);
 
 	useEffect(() => {
 		if (!localStorage.getItem("cycles")) {
-			return localStorage.setItem("cycles", JSON.stringify(cyclesRef.current));
+			localStorage.setItem("cycles", JSON.stringify(cyclesRef.current));
+		}
+		if (!localStorage.getItem("allWorkMinutes")) {
+			localStorage.setItem(
+				"allWorkMinutes",
+				JSON.stringify(allWorkMinutesRef.current)
+			);
+		}
+		if (!localStorage.getItem("allBreakMinutes")) {
+			localStorage.setItem(
+				"allBreakMinutes",
+				JSON.stringify(allBreakMinutesRef.current)
+			);
 		}
 		const localCycles = JSON.parse(localStorage.getItem("cycles") || "[]");
 		setCycles(localCycles);
+
+		const localAllWorkMinutes = JSON.parse(
+			localStorage.getItem("allWorkMinutes") || "[]"
+		);
+		setAllWorkMinutes(localAllWorkMinutes);
+
+		const localAllBreakMinutes = JSON.parse(
+			localStorage.getItem("allBreakMinutes") || "[]"
+		);
+		setAllBreakMinutes(localAllBreakMinutes);
 	}, []);
 
 	return (

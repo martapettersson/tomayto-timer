@@ -21,8 +21,12 @@ const SetAllCycleMinutes: React.FC = () => {
 			cycle.breakMinutes = breakMinutes;
 		}
 
+		localStorage.setItem("allWorkMinutes", JSON.stringify(workMinutes));
 		settingsInfo.setAllWorkMinutes(workMinutes);
+
+		localStorage.setItem("allBreakMinutes", JSON.stringify(breakMinutes));
 		settingsInfo.setAllBreakMinutes(breakMinutes);
+
 		localStorage.setItem("cycles", JSON.stringify(newCycleArray));
 		settingsInfo.setCycles(newCycleArray);
 	};
