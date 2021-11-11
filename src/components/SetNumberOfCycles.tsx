@@ -38,7 +38,7 @@ const SetNumberOfCycles: React.FC = () => {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<label htmlFor="numberOfCycles">Set Number of Cycles</label>
+			<label htmlFor="numberOfCycles">Number of Cycles</label>
 			<input
 				id="numberOfCycles"
 				name="numberOfCycles"
@@ -47,7 +47,7 @@ const SetNumberOfCycles: React.FC = () => {
 				onChange={handleChange}
 				min={1}
 			/>
-			<input type="submit" value="Save" />
+			<input type="submit" value="Set" />
 		</form>
 	);
 };
