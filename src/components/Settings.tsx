@@ -3,6 +3,7 @@ import SettingsContext from "../context/SettingsContext";
 import BackButton from "./BackButton";
 import SetCycleMinutes from "./SetCycleMinutes";
 import SetNumberOfCycles from "./SetNumberOfCycles";
+import SetAllCycleMinutes from "./SetAllCycleMinutes";
 
 const Settings: React.FC = () => {
 	const settingsInfo: any = useContext(SettingsContext);
@@ -11,6 +12,7 @@ const Settings: React.FC = () => {
 		<div>
 			<h1>Settings</h1>
 			<SetNumberOfCycles />
+			<SetAllCycleMinutes />
 			{settingsInfo.cycles.map((cycle: any) => {
 				return (
 					<SetCycleMinutes
