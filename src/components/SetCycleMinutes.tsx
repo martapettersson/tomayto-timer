@@ -27,6 +27,7 @@ const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
 					  };
 			let newCyclesArray = [...settingsInfo.cycles];
 			newCyclesArray[cycleNumber] = newCycleValue;
+			localStorage.setItem("cycles", JSON.stringify(newCyclesArray));
 			settingsInfo.setCycles(newCyclesArray);
 		};
 

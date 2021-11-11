@@ -32,7 +32,7 @@ const SetNumberOfCycles: React.FC = () => {
 				newCycleArray.push(newCycleValue);
 			}
 		}
-
+		localStorage.setItem("cycles", JSON.stringify(newCycleArray));
 		settingsInfo.setCycles(newCycleArray);
 	};
 

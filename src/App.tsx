@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Settings from "./components/Settings";
 import Timer from "./components/Timer";
@@ -12,12 +12,24 @@ export type Cycle = {
 
 const App: React.FC = () => {
 	const [showSettings, setShowSettings] = useState(false);
+
+	// Classic Pomdoro as default settings
 	const [cycles, setCycles] = useState<Cycle[]>([
 		{ cycleNumber: 0, workMinutes: 25, breakMinutes: 5 },
 		{ cycleNumber: 1, workMinutes: 25, breakMinutes: 5 },
 		{ cycleNumber: 2, workMinutes: 25, breakMinutes: 5 },
 		{ cycleNumber: 3, workMinutes: 25, breakMinutes: 20 },
 	]);
+
+	const cyclesRef = useRef(cycles);
+
+	useEffect(() => {
+		if (!localStorage.getItem("cycles")) {
+			return localStorage.setItem("cycles", JSON.stringify(cyclesRef.current));
+		}
+		const localCycles = JSON.parse(localStorage.getItem("cycles") || "[]");
+		setCycles(localCycles);
+	}, []);
 
 	return (
 		<main>
