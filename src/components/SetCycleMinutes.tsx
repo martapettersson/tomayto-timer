@@ -34,7 +34,11 @@ const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
 	return (
 		<div>
 			<h2>Cycle: {cycleNumber + 1}</h2>
-			<label>Work: {cycle.workMinutes}:00</label>
+			<label>
+				Work:{" "}
+				{cycle.workMinutes < 10 ? `0${cycle.workMinutes}` : cycle.workMinutes}
+				:00
+			</label>
 			<ReactSlider
 				className="slider"
 				thumbClassName="thumb"
@@ -44,7 +48,13 @@ const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
 				min={1}
 				max={120}
 			/>
-			<label>Break: {cycle.breakMinutes}:00</label>
+			<label>
+				Break:{" "}
+				{cycle.breakMinutes < 10
+					? `0${cycle.breakMinutes}`
+					: cycle.breakMinutes}
+				:00
+			</label>
 			<ReactSlider
 				className="slider green"
 				thumbClassName="thumb"
