@@ -25,9 +25,9 @@ const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
 							workMinutes: cycle.workMinutes,
 							breakMinutes: value,
 					  };
-			let newCycleArray = [...settingsInfo.cycles];
-			newCycleArray[cycleNumber] = newCycleValue;
-			settingsInfo.setCycles(newCycleArray);
+			let newCyclesArray = [...settingsInfo.cycles];
+			newCyclesArray[cycleNumber] = newCycleValue;
+			settingsInfo.setCycles(newCyclesArray);
 		};
 
 	return (
