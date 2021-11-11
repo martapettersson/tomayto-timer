@@ -26,8 +26,8 @@ const SetNumberOfCycles: React.FC = () => {
 			for (let i = cycles.length; i < numberOfCycles; i++) {
 				const newCycleValue = {
 					cycleNumber: i,
-					workMinutes: 25,
-					breakMinutes: 5,
+					workMinutes: settingsInfo.allWorkMinutes,
+					breakMinutes: settingsInfo.allBreakMinutes,
 				};
 				newCycleArray.push(newCycleValue);
 			}
