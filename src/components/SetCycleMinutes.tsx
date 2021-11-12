@@ -14,7 +14,7 @@ const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
 	const breakTitle = settingsInfo.allBreakTitles;
 
 	const updateCycleMinutes =
-		(cycleNumber: number, mode: string) => (value: number) => {
+		(cycleNumber: number, mode: Mode) => (value: number) => {
 			const newCycleValue =
 				mode === Mode.WORK
 					? {
