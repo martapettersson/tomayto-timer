@@ -23,7 +23,7 @@ const Settings: React.FC = () => {
 					/>
 				);
 			})}
-			<BackButton onClick={() => settingsInfo.setShowSettings(false)} />
+			<BackButton callback={() => settingsInfo.setShowSettings(false)} />
 		</div>
 	);
 };

@@ -1,5 +1,11 @@
-const BackButton = (props: { onClick: () => void }) => {
-	return <button {...props}>Back</button>;
+import React from "react";
+
+type Props = {
+	callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+const BackButton: React.FC<Props> = ({ callback }) => {
+	return <button onClick={callback}>Back</button>;
 };
 
 export default BackButton;
