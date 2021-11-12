@@ -14,6 +14,7 @@ const App: React.FC = () => {
 	const [showSettings, setShowSettings] = useState(false);
 	const [allWorkMinutes, setAllWorkMinutes] = useState(25);
 	const [allBreakMinutes, setAllBreakMinutes] = useState(5);
+	const [volume, setVolume] = useState(0.5);
 
 	// Classic Pomodoro as default settings
 	const [cycles, setCycles] = useState<Cycle[]>([
@@ -69,6 +70,8 @@ const App: React.FC = () => {
 					setAllWorkMinutes,
 					allBreakMinutes,
 					setAllBreakMinutes,
+					volume,
+					setVolume,
 				}}
 			>
 				{showSettings ? <Settings /> : <Timer />}
