@@ -10,6 +10,8 @@ type Props = {
 const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
 	const settingsInfo: any = useContext(SettingsContext);
 	const cycle = settingsInfo.cycles[cycleNumber];
+	const workTitle = settingsInfo.allWorkTitles;
+	const breakTitle = settingsInfo.allBreakTitles;
 
 	const updateCycleMinutes =
 		(cycleNumber: number, mode: string) => (value: number) => {
@@ -35,7 +37,7 @@ const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
 		<div>
 			<h2>Cycle: {cycleNumber + 1}</h2>
 			<label>
-				Work:{" "}
+				{workTitle ? workTitle : "Work"}:{" "}
 				{cycle.workMinutes < 10 ? `0${cycle.workMinutes}` : cycle.workMinutes}
 				:00
 			</label>
@@ -49,7 +51,7 @@ const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
 				max={120}
 			/>
 			<label>
-				Break:{" "}
+				{breakTitle ? breakTitle : "Break"}:{" "}
 				{cycle.breakMinutes < 10
 					? `0${cycle.breakMinutes}`
 					: cycle.breakMinutes}

@@ -28,6 +28,8 @@ const Timer: React.FC = () => {
 	const [mode, setMode] = useState<Mode>(Mode.WORK);
 	const [secondsLeft, setSecondsLeft] = useState(0);
 	const [cycleNumber, setCycleNumber] = useState(0);
+	const workTitle = settingsInfo.allWorkTitles;
+	const breakTitle = settingsInfo.allBreakTitles;
 
 	const isPausedRef = useRef(isPaused);
 	const modeRef = useRef(mode);
@@ -122,7 +124,7 @@ const Timer: React.FC = () => {
 			}
 
 			countdownSeconds();
-		}, 1000);
+		}, 10);
 
 		return () => clearInterval(interval);
 	}, [
@@ -150,7 +152,11 @@ const Timer: React.FC = () => {
 	return (
 		<div>
 			<h1>Timer</h1>
-			<h2>{mode}</h2>
+			{mode === Mode.WORK ? (
+				<h2>{workTitle ? workTitle : mode}</h2>
+			) : (
+				<h2>{breakTitle ? breakTitle : mode}</h2>
+			)}
 			<h3>
 				Cycle Number: {cycleNumber + 1}/{settingsInfo.cycles.length}
 			</h3>
