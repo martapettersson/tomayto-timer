@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import ReactSlider from "react-slider";
 import SettingsContext from "../context/SettingsContext";
 
-const SetAllCycleMinutes: React.FC = () => {
+const SetVolume: React.FC = () => {
 	const settingsInfo: any = useContext(SettingsContext);
 	const volume = settingsInfo.volume;
 
@@ -32,4 +32,4 @@ const SetAllCycleMinutes: React.FC = () => {
 	);
 };
 
-export default SetAllCycleMinutes;
+export default SetVolume;
