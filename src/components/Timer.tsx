@@ -166,7 +166,7 @@ const Timer: React.FC = () => {
 			<div>
 				{isPaused ? (
 					<PlayButton
-						onClick={() => {
+						callback={() => {
 							pauseTimer(false);
 						}}
 					/>
