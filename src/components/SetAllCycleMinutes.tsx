@@ -1,31 +1,25 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import ReactSlider from "react-slider";
 
 import SettingsContext from "../context/SettingsContext";
 
 const SetAllCycleMinutes: React.FC = () => {
 	const settingsInfo: any = useContext(SettingsContext);
+	const allWorkMinutes = settingsInfo.allWorkMinutes;
+	const allBreakMinutes = settingsInfo.allBreakMinutes;
 	const cycles = settingsInfo.cycles;
-
-	const [workMinutes, setWorkMinutes] = useState(settingsInfo.allWorkMinutes);
-	const [breakMinutes, setBreakMinutes] = useState(
-		settingsInfo.allBreakMinutes
-	);
 
 	const handleOnSubmit = (e: any) => {
 		e.preventDefault();
 		let newCycleArray = [...cycles];
 
 		for (let cycle of cycles) {
-			cycle.workMinutes = workMinutes;
-			cycle.breakMinutes = breakMinutes;
+			cycle.workMinutes = allWorkMinutes;
+			cycle.breakMinutes = allBreakMinutes;
 		}
 
-		localStorage.setItem("allWorkMinutes", JSON.stringify(workMinutes));
-		settingsInfo.setAllWorkMinutes(workMinutes);
-
-		localStorage.setItem("allBreakMinutes", JSON.stringify(breakMinutes));
-		settingsInfo.setAllBreakMinutes(breakMinutes);
+		localStorage.setItem("allWorkMinutes", JSON.stringify(allWorkMinutes));
+		localStorage.setItem("allBreakMinutes", JSON.stringify(allBreakMinutes));
 
 		localStorage.setItem("cycles", JSON.stringify(newCycleArray));
 		settingsInfo.setCycles(newCycleArray);
@@ -36,26 +30,27 @@ const SetAllCycleMinutes: React.FC = () => {
 			<h2>Set All Cycle Minutes</h2>
 			<form onSubmit={handleOnSubmit}>
 				<label>
-					Work: {workMinutes < 10 ? `0${workMinutes}` : workMinutes}:00
+					Work: {allWorkMinutes < 10 ? `0${allWorkMinutes}` : allWorkMinutes}:00
 				</label>
 				<ReactSlider
 					className="slider"
 					thumbClassName="thumb"
 					trackClassName="track"
-					value={workMinutes}
-					onChange={(newValue) => setWorkMinutes(newValue)}
+					value={allWorkMinutes}
+					onChange={(newValue) => settingsInfo.setAllWorkMinutes(newValue)}
 					min={1}
 					max={120}
 				/>
 				<label>
-					Break: {breakMinutes < 10 ? `0${breakMinutes}` : breakMinutes}:00
+					Break:{" "}
+					{allBreakMinutes < 10 ? `0${allBreakMinutes}` : allBreakMinutes}:00
 				</label>
 				<ReactSlider
 					className="slider green"
 					thumbClassName="thumb"
 					trackClassName="track"
-					value={breakMinutes}
-					onChange={(newValue) => setBreakMinutes(newValue)}
+					value={allBreakMinutes}
+					onChange={(newValue) => settingsInfo.setAllBreakMinutes(newValue)}
 					min={1}
 					max={120}
 				/>
