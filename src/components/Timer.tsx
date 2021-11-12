@@ -179,7 +179,7 @@ const Timer: React.FC = () => {
 				)}
 			</div>
 			<div>
-				<SettingsButton onClick={() => settingsInfo.setShowSettings(true)} />
+				<SettingsButton callback={() => settingsInfo.setShowSettings(true)} />
 			</div>
 		</div>
 	);
