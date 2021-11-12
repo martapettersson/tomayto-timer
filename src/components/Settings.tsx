@@ -13,9 +13,9 @@ const Settings: React.FC = () => {
 	return (
 		<div>
 			<h1>Settings</h1>
+			<SetVolume />
 			<SetNumberOfCycles />
 			<SetAllCycleMinutes />
-			<SetVolume />
 			<SetIntervalTitles />
 			{settingsInfo.cycles.map((cycle: any) => {
 				return (
