@@ -172,7 +172,7 @@ const Timer: React.FC = () => {
 					/>
 				) : (
 					<PauseButton
-						onClick={() => {
+						callback={() => {
 							pauseTimer(true);
 						}}
 					/>
