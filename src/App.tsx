@@ -27,6 +27,7 @@ const App: React.FC = () => {
 	const cyclesRef = useRef(cycles);
 	const allWorkMinutesRef = useRef(allWorkMinutes);
 	const allBreakMinutesRef = useRef(allBreakMinutes);
+	const volumeRef = useRef(volume);
 
 	useEffect(() => {
 		if (!localStorage.getItem("cycles")) {
@@ -44,6 +45,11 @@ const App: React.FC = () => {
 				JSON.stringify(allBreakMinutesRef.current)
 			);
 		}
+
+		if (!localStorage.getItem("volume")) {
+			localStorage.setItem("volume", JSON.stringify(volumeRef.current));
+		}
+
 		const localCycles = JSON.parse(localStorage.getItem("cycles") || "[]");
 		setCycles(localCycles);
 
@@ -56,6 +62,9 @@ const App: React.FC = () => {
 			localStorage.getItem("allBreakMinutes") || "[]"
 		);
 		setAllBreakMinutes(localAllBreakMinutes);
+
+		const localVolume = JSON.parse(localStorage.getItem("volume") || "[]");
+		setVolume(localVolume);
 	}, []);
 
 	return (
