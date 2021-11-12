@@ -28,8 +28,8 @@ const Timer: React.FC = () => {
 	const [mode, setMode] = useState<Mode>(Mode.WORK);
 	const [secondsLeft, setSecondsLeft] = useState(0);
 	const [cycleNumber, setCycleNumber] = useState(0);
-	const workTitle = settingsInfo.allWorkTitles;
-	const breakTitle = settingsInfo.allBreakTitles;
+	const customWorkTitle = settingsInfo.customWorkTitle;
+	const customBreakTitle = settingsInfo.customBreakTitle;
 
 	const isPausedRef = useRef(isPaused);
 	const modeRef = useRef(mode);
@@ -153,9 +153,9 @@ const Timer: React.FC = () => {
 		<div>
 			<h1>Timer</h1>
 			{mode === Mode.WORK ? (
-				<h2>{workTitle ? workTitle : mode}</h2>
+				<h2>{customWorkTitle ? customWorkTitle : mode}</h2>
 			) : (
-				<h2>{breakTitle ? breakTitle : mode}</h2>
+				<h2>{customBreakTitle ? customBreakTitle : mode}</h2>
 			)}
 			<h3>
 				Cycle Number: {cycleNumber + 1}/{settingsInfo.cycles.length}

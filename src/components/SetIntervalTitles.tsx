@@ -4,8 +4,8 @@ import { Mode } from "./Timer";
 
 const SetIntervalTitles: React.FC = () => {
 	const settingsInfo: any = useContext(SettingsContext);
-	const allWorkTitles = settingsInfo.allWorkTitles;
-	const allBreakTitles = settingsInfo.allBreakTitles;
+	const customWorkTitle = settingsInfo.customWorkTitle;
+	const customBreakTitle = settingsInfo.customBreakTitle;
 	const cycles = settingsInfo.cycles;
 
 	const updateIntervalTitles =
@@ -14,17 +14,17 @@ const SetIntervalTitles: React.FC = () => {
 			let newCyclesArray = [...cycles];
 
 			if (mode === Mode.WORK) {
-				settingsInfo.setAllWorkTitles(e.target.value);
+				settingsInfo.setCustomWorkTitle(e.target.value);
 				for (let cycle of cycles) {
 					cycle.workTitle = inputValue;
 				}
-				localStorage.setItem("allWorkTitles", JSON.stringify(inputValue));
+				localStorage.setItem("customWorkTitle", JSON.stringify(inputValue));
 			} else {
-				settingsInfo.setAllBreakTitles(e.target.value);
+				settingsInfo.setCustomBreakTitle(e.target.value);
 				for (let cycle of cycles) {
 					cycle.breakTitle = inputValue;
 				}
-				localStorage.setItem("allBreakTitles", JSON.stringify(inputValue));
+				localStorage.setItem("customBreakTitle", JSON.stringify(inputValue));
 			}
 
 			localStorage.setItem("cycles", JSON.stringify(newCyclesArray));
@@ -37,16 +37,16 @@ const SetIntervalTitles: React.FC = () => {
 			<label>Work Interval</label>
 			<input
 				type="text"
-				name="allWorkTitles"
-				value={allWorkTitles ? allWorkTitles : ""}
+				name="customWorkTitle"
+				value={customWorkTitle ? customWorkTitle : ""}
 				onChange={updateIntervalTitles(Mode.WORK)}
 			/>
 			<br />
 			<label>Break Interval</label>
 			<input
 				type="text"
-				name="allBreakTitles"
-				value={allBreakTitles ? allBreakTitles : ""}
+				name="customBreakTitle"
+				value={customBreakTitle ? customBreakTitle : ""}
 				onChange={updateIntervalTitles(Mode.BREAK)}
 			/>
 		</div>

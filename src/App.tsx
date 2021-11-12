@@ -16,8 +16,8 @@ const App: React.FC = () => {
 	const [showSettings, setShowSettings] = useState(false);
 	const [allWorkMinutes, setAllWorkMinutes] = useState(25);
 	const [allBreakMinutes, setAllBreakMinutes] = useState(5);
-	const [allWorkTitles, setAllWorkTitles] = useState<null | string>(null);
-	const [allBreakTitles, setAllBreakTitles] = useState<null | string>(null);
+	const [customWorkTitle, setCustomWorkTitle] = useState<null | string>(null);
+	const [customBreakTitle, setCustomBreakTitle] = useState<null | string>(null);
 	const [volume, setVolume] = useState(0.5);
 
 	// Classic Pomodoro as default settings
@@ -32,8 +32,8 @@ const App: React.FC = () => {
 	const allWorkMinutesRef = useRef(allWorkMinutes);
 	const allBreakMinutesRef = useRef(allBreakMinutes);
 	const volumeRef = useRef(volume);
-	const allWorkTitlesRef = useRef(allWorkTitles);
-	const allBreakTitlesRef = useRef(allBreakTitles);
+	const customWorkTitleRef = useRef(customWorkTitle);
+	const customBreakTitleRef = useRef(customBreakTitle);
 
 	useEffect(() => {
 		if (!localStorage.getItem("cycles")) {
@@ -58,16 +58,16 @@ const App: React.FC = () => {
 			localStorage.setItem("volume", JSON.stringify(volumeRef.current));
 		}
 
-		if (!localStorage.getItem("allWorkTitles")) {
+		if (!localStorage.getItem("customWorkTitle")) {
 			localStorage.setItem(
-				"allWorkTitles",
-				JSON.stringify(allWorkTitlesRef.current)
+				"customWorkTitle",
+				JSON.stringify(customWorkTitleRef.current)
 			);
 		}
-		if (!localStorage.getItem("allBreakTitles")) {
+		if (!localStorage.getItem("customBreakTitle")) {
 			localStorage.setItem(
-				"allBreakTitles",
-				JSON.stringify(allBreakTitlesRef.current)
+				"customBreakTitle",
+				JSON.stringify(customBreakTitleRef.current)
 			);
 		}
 
@@ -87,15 +87,15 @@ const App: React.FC = () => {
 		const localVolume = JSON.parse(localStorage.getItem("volume") || "[]");
 		setVolume(localVolume);
 
-		const localAllWorkTitles = JSON.parse(
-			localStorage.getItem("allWorkTitles") || "[]"
+		const localCustomWorkTitle = JSON.parse(
+			localStorage.getItem("customWorkTitle") || "[]"
 		);
-		setAllWorkTitles(localAllWorkTitles);
+		setCustomWorkTitle(localCustomWorkTitle);
 
-		const localAllBreakTitles = JSON.parse(
-			localStorage.getItem("allBreakTitles") || "[]"
+		const localCustomBreakTitle = JSON.parse(
+			localStorage.getItem("customBreakTitle") || "[]"
 		);
-		setAllBreakTitles(localAllBreakTitles);
+		setCustomBreakTitle(localCustomBreakTitle);
 	}, []);
 
 	return (
@@ -112,10 +112,10 @@ const App: React.FC = () => {
 					setAllBreakMinutes,
 					volume,
 					setVolume,
-					allWorkTitles,
-					setAllWorkTitles,
-					allBreakTitles,
-					setAllBreakTitles,
+					customWorkTitle,
+					setCustomWorkTitle,
+					customBreakTitle,
+					setCustomBreakTitle,
 				}}
 			>
 				{showSettings ? <Settings /> : <Timer />}
