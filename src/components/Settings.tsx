@@ -4,6 +4,7 @@ import BackButton from "./BackButton";
 import SetCycleMinutes from "./SetCycleMinutes";
 import SetNumberOfCycles from "./SetNumberOfCycles";
 import SetAllCycleMinutes from "./SetAllCycleMinutes";
+import SetVolume from "./SetVolume";
 
 const Settings: React.FC = () => {
 	const settingsInfo: any = useContext(SettingsContext);
@@ -13,6 +14,7 @@ const Settings: React.FC = () => {
 			<h1>Settings</h1>
 			<SetNumberOfCycles />
 			<SetAllCycleMinutes />
+			<SetVolume />
 			{settingsInfo.cycles.map((cycle: any) => {
 				return (
 					<SetCycleMinutes

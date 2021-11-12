@@ -34,9 +34,15 @@ const Timer: React.FC = () => {
 	const secondsLeftRef = useRef(secondsLeft);
 	const cycleNumberRef = useRef(cycleNumber);
 
-	const [playBreakAlarm] = useSound(breakAlarm);
-	const [playWorkAlarm] = useSound(workAlarm);
-	const [playEndAlarm] = useSound(endAlarm);
+	const [playBreakAlarm] = useSound(breakAlarm, {
+		volume: settingsInfo.volume,
+	});
+	const [playWorkAlarm] = useSound(workAlarm, {
+		volume: settingsInfo.volume,
+	});
+	const [playEndAlarm] = useSound(endAlarm, {
+		volume: settingsInfo.volume,
+	});
 
 	const initializeTimer = useCallback(() => {
 		secondsLeftRef.current =
