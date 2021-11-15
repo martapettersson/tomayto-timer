@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./App.css";
+import "./styles/App.css";
 import Settings from "./components/Settings";
 import Timer from "./components/Timer";
 import SettingsContext from "./context/SettingsContext";
@@ -19,6 +19,7 @@ const App: React.FC = () => {
 	const [customWorkTitle, setCustomWorkTitle] = useState<null | string>(null);
 	const [customBreakTitle, setCustomBreakTitle] = useState<null | string>(null);
 	const [volume, setVolume] = useState(0.5);
+	const [colorTheme, setColorTheme] = useState("purpleDream");
 
 	// Classic Pomodoro as default settings
 	const [cycles, setCycles] = useState<Cycle[]>(Pomodoro);
@@ -98,27 +99,31 @@ const App: React.FC = () => {
 	}, []);
 
 	return (
-		<main>
-			<SettingsContext.Provider
-				value={{
-					showSettings,
-					setShowSettings,
-					cycles,
-					setCycles,
-					allWorkMinutes,
-					setAllWorkMinutes,
-					allBreakMinutes,
-					setAllBreakMinutes,
-					volume,
-					setVolume,
-					customWorkTitle,
-					setCustomWorkTitle,
-					customBreakTitle,
-					setCustomBreakTitle,
-				}}
-			>
-				{showSettings ? <Settings /> : <Timer />}
-			</SettingsContext.Provider>
+		<main className={colorTheme}>
+			<div className="container">
+				<SettingsContext.Provider
+					value={{
+						showSettings,
+						setShowSettings,
+						cycles,
+						setCycles,
+						allWorkMinutes,
+						setAllWorkMinutes,
+						allBreakMinutes,
+						setAllBreakMinutes,
+						volume,
+						setVolume,
+						customWorkTitle,
+						setCustomWorkTitle,
+						customBreakTitle,
+						setCustomBreakTitle,
+						colorTheme,
+						setColorTheme,
+					}}
+				>
+					{showSettings ? <Settings /> : <Timer />}
+				</SettingsContext.Provider>
+			</div>
 		</main>
 	);
 };

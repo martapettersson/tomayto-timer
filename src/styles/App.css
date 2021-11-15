@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap");
+:root {
+	--primary: #860eff;
+	--secondary: #ddbaff;
+	--background: #fffff0;
+}
+
+.container {
+	padding-top: 50px;
+	max-width: 340px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Open Sans", sans-serif;
+}
+
+main {
+	color: var(--primary);
+	background-color: var(--background);
+}
+
+/* COLOR THEMES */
+
+.purpleDream {
+	--primary: #860eff;
+	--secondary: #ddbaff;
+	--background: #fffff0;
+}
+.darkNight {
+	--primary: #c6e1ff;
+	--secondary: #31547c;
+	--background: #001a38;
+}
+
+/* SLIDER */
+
+.slider {
+	height: 40px;
+	border: 2px solid var(--secondary);
+	border-radius: 20px;
+}
+
+.thumb {
+	background-color: var(--primary);
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+}
+
+.slider.green {
+	border-color: green;
+}
+.slider.green .thumb {
+	background-color: green;
+}
