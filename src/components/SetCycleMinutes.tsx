@@ -57,7 +57,7 @@ const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
 				:00
 			</label>
 			<ReactSlider
-				className="slider green"
+				className="slider"
 				thumbClassName="thumb"
 				trackClassName="track"
 				value={cycle.breakMinutes}
