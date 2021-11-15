@@ -17,6 +17,8 @@ const Settings: React.FC = () => {
 		setVolume,
 		setAllWorkMinutes,
 		setAllBreakMinutes,
+		setCustomWorkTitle,
+		setCustomBreakTitle,
 	} = useContext(SettingsContext);
 
 	const [numberOfCycles, setNumberOfCycles] = useState(cycles.length);
@@ -27,6 +29,8 @@ const Settings: React.FC = () => {
 		setAllWorkMinutes(25);
 		setAllBreakMinutes(5);
 		setNumberOfCycles(Pomodoro.length);
+		setCustomWorkTitle("");
+		setCustomBreakTitle("");
 		localStorage.clear();
 	};
 
