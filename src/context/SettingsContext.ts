@@ -23,6 +23,8 @@ export type GlobalSettings = {
 	setCustomWorkTitle: (customWorkTitle: string) => void;
 	customBreakTitle: string | null;
 	setCustomBreakTitle: (customBreakTitle: string) => void;
+	colorTheme: string;
+	setColorTheme: (colorTheme: string) => void;
 };
 
 const SettingsContext = React.createContext<GlobalSettings>({
@@ -40,6 +42,8 @@ const SettingsContext = React.createContext<GlobalSettings>({
 	setCustomWorkTitle: () => {},
 	customBreakTitle: null,
 	setCustomBreakTitle: () => {},
+	colorTheme: "purpleDream",
+	setColorTheme: () => {},
 });
 
 export default SettingsContext;
