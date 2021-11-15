@@ -8,7 +8,7 @@ import SetVolume from "./SetVolume";
 import SetIntervalTitles from "./SetIntervalTitles";
 
 const Settings: React.FC = () => {
-	const settingsInfo: any = useContext(SettingsContext);
+	const { cycles, setShowSettings } = useContext(SettingsContext);
 
 	return (
 		<div>
@@ -17,7 +17,7 @@ const Settings: React.FC = () => {
 			<SetNumberOfCycles />
 			<SetAllCycleMinutes />
 			<SetIntervalTitles />
-			{settingsInfo.cycles.map((cycle: any) => {
+			{cycles.map((cycle: any) => {
 				return (
 					<SetCycleMinutes
 						key={cycle.cycleNumber}
@@ -25,7 +25,7 @@ const Settings: React.FC = () => {
 					/>
 				);
 			})}
-			<BackButton callback={() => settingsInfo.setShowSettings(false)} />
+			<BackButton callback={() => setShowSettings(false)} />
 		</div>
 	);
 };
