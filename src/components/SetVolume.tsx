@@ -3,11 +3,10 @@ import ReactSlider from "react-slider";
 import SettingsContext from "../context/SettingsContext";
 
 const SetVolume: React.FC = () => {
-	const settingsInfo: any = useContext(SettingsContext);
-	const volume = settingsInfo.volume;
+	const { volume, setVolume } = useContext(SettingsContext);
 
 	const updateAlarmVolume = (value: number) => {
-		settingsInfo.setVolume(value);
+		setVolume(value);
 		localStorage.setItem("volume", JSON.stringify(value));
 	};
 
