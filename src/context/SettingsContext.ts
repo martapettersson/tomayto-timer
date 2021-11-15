@@ -5,7 +5,7 @@ export type Cycle = {
 	workMinutes: number;
 	breakMinutes: number;
 	workTitle?: string;
-	breakitle?: string;
+	breakTitle?: string;
 };
 
 export type GlobalSettings = {
