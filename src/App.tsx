@@ -5,6 +5,13 @@ import Timer from "./components/Timer";
 import SettingsContext from "./context/SettingsContext";
 import type { Cycle } from "./context/SettingsContext";
 
+export const Pomodoro: Cycle[] = [
+	{ cycleNumber: 0, workMinutes: 25, breakMinutes: 5 },
+	{ cycleNumber: 1, workMinutes: 25, breakMinutes: 5 },
+	{ cycleNumber: 2, workMinutes: 25, breakMinutes: 5 },
+	{ cycleNumber: 3, workMinutes: 25, breakMinutes: 20 },
+];
+
 const App: React.FC = () => {
 	const [showSettings, setShowSettings] = useState(false);
 	const [allWorkMinutes, setAllWorkMinutes] = useState(25);
@@ -14,12 +21,7 @@ const App: React.FC = () => {
 	const [volume, setVolume] = useState(0.5);
 
 	// Classic Pomodoro as default settings
-	const [cycles, setCycles] = useState<Cycle[]>([
-		{ cycleNumber: 0, workMinutes: 25, breakMinutes: 5 },
-		{ cycleNumber: 1, workMinutes: 25, breakMinutes: 5 },
-		{ cycleNumber: 2, workMinutes: 25, breakMinutes: 5 },
-		{ cycleNumber: 3, workMinutes: 25, breakMinutes: 20 },
-	]);
+	const [cycles, setCycles] = useState<Cycle[]>(Pomodoro);
 
 	const cyclesRef = useRef(cycles);
 	const allWorkMinutesRef = useRef(allWorkMinutes);

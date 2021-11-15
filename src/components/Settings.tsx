@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import SettingsContext from "../context/SettingsContext";
 import BackButton from "./BackButton";
 import SetCycleMinutes from "./SetCycleMinutes";
@@ -7,15 +7,38 @@ import SetAllCycleMinutes from "./SetAllCycleMinutes";
 import SetVolume from "./SetVolume";
 import SetIntervalTitles from "./SetIntervalTitles";
 import type { Cycle } from "../context/SettingsContext";
+import { Pomodoro } from "../App";
 
 const Settings: React.FC = () => {
-	const { cycles, setShowSettings } = useContext(SettingsContext);
+	const {
+		cycles,
+		setShowSettings,
+		setCycles,
+		setVolume,
+		setAllWorkMinutes,
+		setAllBreakMinutes,
+	} = useContext(SettingsContext);
+
+	const [numberOfCycles, setNumberOfCycles] = useState(cycles.length);
+
+	const reset = () => {
+		setCycles(Pomodoro);
+		setVolume(0.5);
+		setAllWorkMinutes(25);
+		setAllBreakMinutes(5);
+		setNumberOfCycles(Pomodoro.length);
+		localStorage.clear();
+	};
 
 	return (
 		<div>
 			<h1>Settings</h1>
+			<button onClick={reset}>Reset</button>
 			<SetVolume />
-			<SetNumberOfCycles />
+			<SetNumberOfCycles
+				numberOfCycles={numberOfCycles}
+				setNumberOfCycles={setNumberOfCycles}
+			/>
 			<SetAllCycleMinutes />
 			<SetIntervalTitles />
 			{cycles.map((cycle: Cycle) => {

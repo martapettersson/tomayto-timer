@@ -1,10 +1,17 @@
 import React, { useContext, useState } from "react";
 import SettingsContext from "../context/SettingsContext";
 
-const SetNumberOfCycles: React.FC = () => {
+type Props = {
+	numberOfCycles: number;
+	setNumberOfCycles: (value: number) => void;
+};
+
+const SetNumberOfCycles: React.FC<Props> = ({
+	numberOfCycles,
+	setNumberOfCycles,
+}) => {
 	const { cycles, setCycles, allWorkMinutes, allBreakMinutes } =
 		useContext(SettingsContext);
-	const [numberOfCycles, setNumberOfCycles] = useState(cycles.length);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const inputValue: number = parseInt(e.target.value);
