@@ -161,6 +161,7 @@ const Timer: React.FC = () => {
 			<CircularProgressbar
 				value={percentage}
 				text={`${minutes}:${seconds}`}
+				strokeWidth={2}
 				styles={buildStyles({
 					textColor: "var(--primary)",
 					pathColor: mode === Mode.WORK ? "var(--red)" : "var(--green)",
