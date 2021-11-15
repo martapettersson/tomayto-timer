@@ -6,6 +6,7 @@ import SetNumberOfCycles from "./SetNumberOfCycles";
 import SetAllCycleMinutes from "./SetAllCycleMinutes";
 import SetVolume from "./SetVolume";
 import SetIntervalTitles from "./SetIntervalTitles";
+import type { Cycle } from "../context/SettingsContext";
 
 const Settings: React.FC = () => {
 	const { cycles, setShowSettings } = useContext(SettingsContext);
@@ -17,7 +18,7 @@ const Settings: React.FC = () => {
 			<SetNumberOfCycles />
 			<SetAllCycleMinutes />
 			<SetIntervalTitles />
-			{cycles.map((cycle: any) => {
+			{cycles.map((cycle: Cycle) => {
 				return (
 					<SetCycleMinutes
 						key={cycle.cycleNumber}
