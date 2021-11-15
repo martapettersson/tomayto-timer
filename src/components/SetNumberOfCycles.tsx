@@ -2,16 +2,16 @@ import React, { useContext, useState } from "react";
 import SettingsContext from "../context/SettingsContext";
 
 const SetNumberOfCycles: React.FC = () => {
-	const settingsInfo: any = useContext(SettingsContext);
-	const cycles = settingsInfo.cycles;
-
+	const { cycles, setCycles, allWorkMinutes, allBreakMinutes } =
+		useContext(SettingsContext);
 	const [numberOfCycles, setNumberOfCycles] = useState(cycles.length);
 
-	const handleChange = (e: any) => {
-		setNumberOfCycles(e.target.value < 1 ? 1 : e.target.value);
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const inputValue: number = parseInt(e.target.value);
+		setNumberOfCycles(inputValue < 1 ? 1 : inputValue);
 	};
 
-	const handleSubmit = (e: any) => {
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		let newCycleArray = [...cycles];
 
@@ -26,14 +26,14 @@ const SetNumberOfCycles: React.FC = () => {
 			for (let i = cycles.length; i < numberOfCycles; i++) {
 				const newCycleValue = {
 					cycleNumber: i,
-					workMinutes: settingsInfo.allWorkMinutes,
-					breakMinutes: settingsInfo.allBreakMinutes,
+					workMinutes: allWorkMinutes,
+					breakMinutes: allBreakMinutes,
 				};
 				newCycleArray.push(newCycleValue);
 			}
 		}
 		localStorage.setItem("cycles", JSON.stringify(newCycleArray));
-		settingsInfo.setCycles(newCycleArray);
+		setCycles(newCycleArray);
 	};
 
 	return (
