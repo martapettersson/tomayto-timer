@@ -162,9 +162,9 @@ const Timer: React.FC = () => {
 				value={percentage}
 				text={`${minutes}:${seconds}`}
 				styles={buildStyles({
-					textColor: "#000",
-					pathColor: mode === Mode.WORK ? "red" : "green",
-					trailColor: "grey",
+					textColor: "var(--primary)",
+					pathColor: mode === Mode.WORK ? "var(--red)" : "var(--green)",
+					trailColor: "var(--secondary)",
 				})}
 			/>
 			<div>
