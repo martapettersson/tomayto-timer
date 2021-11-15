@@ -6,6 +6,7 @@ import SetNumberOfCycles from "./SetNumberOfCycles";
 import SetAllCycleMinutes from "./SetAllCycleMinutes";
 import SetVolume from "./SetVolume";
 import SetIntervalTitles from "./SetIntervalTitles";
+import SetColorTheme from "./SetColorTheme";
 import type { Cycle } from "../context/SettingsContext";
 import { Pomodoro } from "../App";
 
@@ -19,6 +20,7 @@ const Settings: React.FC = () => {
 		setAllBreakMinutes,
 		setCustomWorkTitle,
 		setCustomBreakTitle,
+		setColorTheme,
 	} = useContext(SettingsContext);
 
 	const [numberOfCycles, setNumberOfCycles] = useState(cycles.length);
@@ -31,6 +33,7 @@ const Settings: React.FC = () => {
 		setNumberOfCycles(Pomodoro.length);
 		setCustomWorkTitle("");
 		setCustomBreakTitle("");
+		setColorTheme("purpleDream");
 		localStorage.clear();
 	};
 
@@ -38,6 +41,7 @@ const Settings: React.FC = () => {
 		<div>
 			<h1>Settings</h1>
 			<button onClick={reset}>Reset</button>
+			<SetColorTheme />
 			<SetVolume />
 			<SetNumberOfCycles
 				numberOfCycles={numberOfCycles}
