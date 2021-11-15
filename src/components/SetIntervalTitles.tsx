@@ -3,10 +3,14 @@ import SettingsContext from "../context/SettingsContext";
 import { Mode } from "./Timer";
 
 const SetIntervalTitles: React.FC = () => {
-	const settingsInfo: any = useContext(SettingsContext);
-	const customWorkTitle = settingsInfo.customWorkTitle;
-	const customBreakTitle = settingsInfo.customBreakTitle;
-	const cycles = settingsInfo.cycles;
+	const {
+		customWorkTitle,
+		setCustomWorkTitle,
+		customBreakTitle,
+		setCustomBreakTitle,
+		cycles,
+		setCycles,
+	} = useContext(SettingsContext);
 
 	const updateIntervalTitles =
 		(mode: Mode) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,13 +18,13 @@ const SetIntervalTitles: React.FC = () => {
 			let newCyclesArray = [...cycles];
 
 			if (mode === Mode.WORK) {
-				settingsInfo.setCustomWorkTitle(e.target.value);
+				setCustomWorkTitle(e.target.value);
 				for (let cycle of cycles) {
 					cycle.workTitle = inputValue;
 				}
 				localStorage.setItem("customWorkTitle", JSON.stringify(inputValue));
 			} else {
-				settingsInfo.setCustomBreakTitle(e.target.value);
+				setCustomBreakTitle(e.target.value);
 				for (let cycle of cycles) {
 					cycle.breakTitle = inputValue;
 				}
@@ -28,7 +32,7 @@ const SetIntervalTitles: React.FC = () => {
 			}
 
 			localStorage.setItem("cycles", JSON.stringify(newCyclesArray));
-			settingsInfo.setCycles(newCyclesArray);
+			setCycles(newCyclesArray);
 		};
 
 	return (
