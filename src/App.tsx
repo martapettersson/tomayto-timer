@@ -64,28 +64,32 @@ const App: React.FC = () => {
 			);
 		}
 
-		const localCycles = JSON.parse(localStorage.getItem("cycles") || "[]");
+		const localCycles: Cycle[] = JSON.parse(
+			localStorage.getItem("cycles") || "[]"
+		);
 		setCycles(localCycles);
 
-		const localAllWorkMinutes = JSON.parse(
+		const localAllWorkMinutes: number = JSON.parse(
 			localStorage.getItem("allWorkMinutes") || "[]"
 		);
 		setAllWorkMinutes(localAllWorkMinutes);
 
-		const localAllBreakMinutes = JSON.parse(
+		const localAllBreakMinutes: number = JSON.parse(
 			localStorage.getItem("allBreakMinutes") || "[]"
 		);
 		setAllBreakMinutes(localAllBreakMinutes);
 
-		const localVolume = JSON.parse(localStorage.getItem("volume") || "[]");
+		const localVolume: number = JSON.parse(
+			localStorage.getItem("volume") || "[]"
+		);
 		setVolume(localVolume);
 
-		const localCustomWorkTitle = JSON.parse(
+		const localCustomWorkTitle: string | null = JSON.parse(
 			localStorage.getItem("customWorkTitle") || "[]"
 		);
 		setCustomWorkTitle(localCustomWorkTitle);
 
-		const localCustomBreakTitle = JSON.parse(
+		const localCustomBreakTitle: string | null = JSON.parse(
 			localStorage.getItem("customBreakTitle") || "[]"
 		);
 		setCustomBreakTitle(localCustomBreakTitle);
