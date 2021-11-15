@@ -8,10 +8,9 @@ type Props = {
 };
 
 const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
-	const settingsInfo: any = useContext(SettingsContext);
-	const cycle = settingsInfo.cycles[cycleNumber];
-	const customWorkTitle = settingsInfo.customWorkTitle;
-	const customBreakTitle = settingsInfo.customBreakTitle;
+	const { cycles, setCycles, customWorkTitle, customBreakTitle } =
+		useContext(SettingsContext);
+	const cycle = cycles[cycleNumber];
 
 	const updateCycleMinutes =
 		(cycleNumber: number, mode: Mode) => (value: number) => {
@@ -27,10 +26,10 @@ const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
 							workMinutes: cycle.workMinutes,
 							breakMinutes: value,
 					  };
-			let newCyclesArray = [...settingsInfo.cycles];
+			let newCyclesArray = [...cycles];
 			newCyclesArray[cycleNumber] = newCycleValue;
 			localStorage.setItem("cycles", JSON.stringify(newCyclesArray));
-			settingsInfo.setCycles(newCyclesArray);
+			setCycles(newCyclesArray);
 		};
 
 	return (
