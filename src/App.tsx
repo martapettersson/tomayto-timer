@@ -3,14 +3,7 @@ import "./App.css";
 import Settings from "./components/Settings";
 import Timer from "./components/Timer";
 import SettingsContext from "./context/SettingsContext";
-
-export type Cycle = {
-	cycleNumber: number;
-	workMinutes: number;
-	breakMinutes: number;
-	workTitle?: string;
-	breakitle?: string;
-};
+import type { Cycle } from "./context/SettingsContext";
 
 const App: React.FC = () => {
 	const [showSettings, setShowSettings] = useState(false);
