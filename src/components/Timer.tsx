@@ -22,14 +22,13 @@ export enum Mode {
 }
 
 const Timer: React.FC = () => {
-	const settingsInfo: any = useContext(SettingsContext);
+	const { customWorkTitle, customBreakTitle, volume, cycles, setShowSettings } =
+		useContext(SettingsContext);
 
 	const [isPaused, setIsPaused] = useState(true);
 	const [mode, setMode] = useState<Mode>(Mode.WORK);
 	const [secondsLeft, setSecondsLeft] = useState(0);
 	const [cycleNumber, setCycleNumber] = useState(0);
-	const customWorkTitle = settingsInfo.customWorkTitle;
-	const customBreakTitle = settingsInfo.customBreakTitle;
 
 	const isPausedRef = useRef(isPaused);
 	const modeRef = useRef(mode);
@@ -37,20 +36,19 @@ const Timer: React.FC = () => {
 	const cycleNumberRef = useRef(cycleNumber);
 
 	const [playBreakAlarm] = useSound(breakAlarm, {
-		volume: settingsInfo.volume,
+		volume: volume,
 	});
 	const [playWorkAlarm] = useSound(workAlarm, {
-		volume: settingsInfo.volume,
+		volume: volume,
 	});
 	const [playEndAlarm] = useSound(endAlarm, {
-		volume: settingsInfo.volume,
+		volume: volume,
 	});
 
 	const initializeTimer = useCallback(() => {
-		secondsLeftRef.current =
-			settingsInfo.cycles[cycleNumberRef.current].workMinutes * 60;
+		secondsLeftRef.current = cycles[cycleNumberRef.current].workMinutes * 60;
 		setSecondsLeft(secondsLeftRef.current);
-	}, [settingsInfo]);
+	}, [cycles]);
 
 	const countdownSeconds = () => {
 		secondsLeftRef.current--;
@@ -74,15 +72,15 @@ const Timer: React.FC = () => {
 
 		const nextSeconds =
 			(nextMode === Mode.WORK
-				? settingsInfo.cycles[cycleNumberRef.current].workMinutes
-				: settingsInfo.cycles[cycleNumberRef.current].breakMinutes) * 60;
+				? cycles[cycleNumberRef.current].workMinutes
+				: cycles[cycleNumberRef.current].breakMinutes) * 60;
 
 		setMode(nextMode);
 		modeRef.current = nextMode;
 
 		setSecondsLeft(nextSeconds);
 		secondsLeftRef.current = nextSeconds;
-	}, [settingsInfo]);
+	}, [cycles]);
 
 	const endOfSession = useCallback(() => {
 		pauseTimer(true);
@@ -109,7 +107,7 @@ const Timer: React.FC = () => {
 
 			// All cycles are done
 			if (
-				cycleNumberRef.current === settingsInfo.cycles.length - 1 &&
+				cycleNumberRef.current === cycles.length - 1 &&
 				modeRef.current === Mode.BREAK &&
 				secondsLeftRef.current === 0
 			) {
@@ -128,7 +126,7 @@ const Timer: React.FC = () => {
 
 		return () => clearInterval(interval);
 	}, [
-		settingsInfo,
+		cycles,
 		initializeTimer,
 		playBreakAlarm,
 		playWorkAlarm,
@@ -139,8 +137,8 @@ const Timer: React.FC = () => {
 	// Calculate percentage
 	const totalSeconds: number =
 		mode === Mode.WORK
-			? settingsInfo.cycles[cycleNumber].workMinutes * 60
-			: settingsInfo.cycles[cycleNumber].breakMinutes * 60;
+			? cycles[cycleNumber].workMinutes * 60
+			: cycles[cycleNumber].breakMinutes * 60;
 	const percentage: number = Math.round((secondsLeft / totalSeconds) * 100);
 
 	// Calculate time
@@ -158,7 +156,7 @@ const Timer: React.FC = () => {
 				<h2>{customBreakTitle ? customBreakTitle : mode}</h2>
 			)}
 			<h3>
-				Cycle Number: {cycleNumber + 1}/{settingsInfo.cycles.length}
+				Cycle Number: {cycleNumber + 1}/{cycles.length}
 			</h3>
 			<CircularProgressbar
 				value={percentage}
@@ -185,7 +183,7 @@ const Timer: React.FC = () => {
 				)}
 			</div>
 			<div>
-				<SettingsButton callback={() => settingsInfo.setShowSettings(true)} />
+				<SettingsButton callback={() => setShowSettings(true)} />
 			</div>
 		</div>
 	);
