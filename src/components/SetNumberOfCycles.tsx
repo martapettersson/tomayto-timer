@@ -3,7 +3,7 @@ import SettingsContext from "../context/SettingsContext";
 
 type Props = {
 	numberOfCycles: number;
-	setNumberOfCycles: (value: number) => void;
+	setNumberOfCycles: (numberOfCycles: number) => void;
 };
 
 const SetNumberOfCycles: React.FC<Props> = ({
