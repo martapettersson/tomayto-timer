@@ -10,6 +10,8 @@
 	max-width: 340px;
 	margin: 0 auto;
 	text-align: center;
+	font-weight: 300;
+	line-height: 36px;
 }
 
 body {
@@ -22,6 +24,15 @@ body {
 main {
 	color: var(--primary);
 	background-color: var(--background);
+}
+
+/* HEADINGS */
+
+h1,
+h2,
+h3,
+h4 {
+	font-weight: 300;
 }
 
 /* COLOR THEMES */
