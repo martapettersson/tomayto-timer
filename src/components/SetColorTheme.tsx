@@ -11,14 +11,25 @@ const SetColorTheme: React.FC = () => {
 	};
 	return (
 		<div>
-			<select name="colorTheme" value={colorTheme} onChange={updateColorTheme}>
-				<option value="purpleDream">Purple Dream</option>
-				<option value="darkNight">Dark Night</option>
-				<option value="solarPower">Solar Power</option>
-				<option value="greenHaven">Green Haven</option>
-				<option value="bubbleGum">Bubbel Gum</option>
-				<option value="earlGrey">Earl Grey</option>
-			</select>
+			<h2>Color Theme</h2>
+			<div className="colorThemeSelect">
+				<label htmlFor="colorTheme">Choose color theme</label>
+				<div className="select">
+					<select
+						name="colorTheme"
+						value={colorTheme}
+						onChange={updateColorTheme}
+					>
+						<option value="purpleDream">Purple Dream</option>
+						<option value="darkNight">Dark Night</option>
+						<option value="solarPower">Solar Power</option>
+						<option value="greenHaven">Green Haven</option>
+						<option value="bubbleGum">Bubbel Gum</option>
+						<option value="earlGrey">Earl Grey</option>
+					</select>
+					<span className="focus"></span>
+				</div>
+			</div>
 		</div>
 	);
 };
