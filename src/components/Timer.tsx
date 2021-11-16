@@ -149,14 +149,14 @@ const Timer: React.FC = () => {
 
 	return (
 		<div className="timerContainer">
-			<h1>Timer</h1>
+			<h1>Tomayto Timer</h1>
 			{mode === Mode.WORK ? (
-				<h2>{customWorkTitle ? customWorkTitle : mode}</h2>
+				<h2>{customWorkTitle ? customWorkTitle.toLowerCase() : mode}</h2>
 			) : (
-				<h2>{customBreakTitle ? customBreakTitle : mode}</h2>
+				<h2>{customBreakTitle ? customBreakTitle.toLowerCase() : mode}</h2>
 			)}
 			<h3>
-				Cycle Number: {cycleNumber + 1}/{cycles.length}
+				Cycle {cycleNumber + 1}/{cycles.length}
 			</h3>
 			<CircularProgressbar
 				value={percentage}
