@@ -5,15 +5,6 @@
 	--green: #3fd375;
 }
 
-.container {
-	padding-top: 50px;
-	max-width: 340px;
-	margin: 0 auto;
-	text-align: center;
-	font-weight: 300;
-	line-height: 36px;
-}
-
 body {
 	margin: 0;
 	padding: 0;
@@ -26,13 +17,13 @@ main {
 	background-color: var(--background);
 }
 
-/* HEADINGS */
-
-h1,
-h2,
-h3,
-h4 {
+.container {
+	padding-top: 50px;
+	max-width: 340px;
+	margin: 0 auto;
+	text-align: center;
 	font-weight: 300;
+	line-height: 36px;
 }
 
 /* COLOR THEMES */
@@ -72,6 +63,21 @@ h4 {
 	--background: #d8d8d8;
 }
 
+/* TIMER */
+
+.timerContainer {
+	height: 100vh;
+}
+
+/* HEADINGS */
+
+h1,
+h2,
+h3,
+h4 {
+	font-weight: 300;
+}
+
 /* BUTTONS */
 
 button {
@@ -93,13 +99,7 @@ button.playAndPauseBtn {
 	padding: 0;
 }
 
-/* TIMER */
-
-.timerContainer {
-	height: 100vh;
-}
-
-/* SLIDER */
+/* SLIDERS */
 
 .slider {
 	height: 40px;
