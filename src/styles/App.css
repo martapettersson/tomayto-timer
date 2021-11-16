@@ -69,6 +69,18 @@ main {
 	height: 100vh;
 }
 
+/* SETTINGS */
+
+.settingsContainer {
+	height: fit-content;
+	padding-bottom: 50px;
+}
+
+.settingsTop {
+	display: flex;
+	justify-content: space-between;
+}
+
 /* HEADINGS */
 
 h1,

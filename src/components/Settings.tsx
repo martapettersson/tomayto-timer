@@ -38,9 +38,12 @@ const Settings: React.FC = () => {
 	};
 
 	return (
-		<div>
+		<div className="settingsContainer">
+			<div className="settingsTop">
+				<BackButton callback={() => setShowSettings(false)} />
+				<button onClick={reset}>Reset</button>
+			</div>
 			<h1>Settings</h1>
-			<button onClick={reset}>Reset</button>
 			<SetColorTheme />
 			<SetVolume />
 			<SetNumberOfCycles
@@ -57,7 +60,6 @@ const Settings: React.FC = () => {
 					/>
 				);
 			})}
-			<BackButton callback={() => setShowSettings(false)} />
 		</div>
 	);
 };
