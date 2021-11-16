@@ -148,7 +148,7 @@ const Timer: React.FC = () => {
 	if (seconds < 10) seconds = `0${seconds}`;
 
 	return (
-		<div>
+		<div className="timerContainer">
 			<h1>Timer</h1>
 			{mode === Mode.WORK ? (
 				<h2>{customWorkTitle ? customWorkTitle : mode}</h2>
