@@ -9,15 +9,10 @@ const PauseButton: React.FC<Props> = ({ callback }) => {
 		<button className="playAndPauseBtn" onClick={callback}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
-				className="h-5 w-5"
-				viewBox="0 0 20 20"
+				viewBox="0 0 24 24"
 				fill="currentColor"
 			>
-				<path
-					fillRule="evenodd"
-					d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
-					clipRule="evenodd"
-				/>
+				<path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1 17h-3v-10h3v10zm5 0h-3v-10h3v10z" />
 			</svg>
 		</button>
 	);
