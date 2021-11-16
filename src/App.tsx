@@ -30,6 +30,7 @@ const App: React.FC = () => {
 	const volumeRef = useRef(volume);
 	const customWorkTitleRef = useRef(customWorkTitle);
 	const customBreakTitleRef = useRef(customBreakTitle);
+	const colorThemeRef = useRef(colorTheme);
 
 	useEffect(() => {
 		if (!localStorage.getItem("cycles")) {
@@ -67,6 +68,10 @@ const App: React.FC = () => {
 			);
 		}
 
+		if (!localStorage.getItem("colorTheme")) {
+			localStorage.setItem("colorTheme", JSON.stringify(colorThemeRef.current));
+		}
+
 		const localCycles: Cycle[] = JSON.parse(
 			localStorage.getItem("cycles") || "[]"
 		);
@@ -96,6 +101,11 @@ const App: React.FC = () => {
 			localStorage.getItem("customBreakTitle") || "[]"
 		);
 		setCustomBreakTitle(localCustomBreakTitle);
+
+		const localColorTheme: string = JSON.parse(
+			localStorage.getItem("colorTheme") || "[]"
+		);
+		setColorTheme(localColorTheme);
 	}, []);
 
 	return (

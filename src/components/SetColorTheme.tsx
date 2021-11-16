@@ -5,7 +5,9 @@ const SetColorTheme: React.FC = () => {
 	const { colorTheme, setColorTheme } = useContext(SettingsContext);
 
 	const updateColorTheme = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		setColorTheme(e.target.value);
+		const inputValue: string = e.target.value;
+		setColorTheme(inputValue);
+		localStorage.setItem("colorTheme", JSON.stringify(inputValue));
 	};
 	return (
 		<div>
