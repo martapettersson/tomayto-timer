@@ -46,6 +46,7 @@ const Settings: React.FC = () => {
 			<h1>Settings</h1>
 			<SetColorTheme />
 			<SetVolume />
+			<h2>Cycles</h2>
 			<SetNumberOfCycles
 				numberOfCycles={numberOfCycles}
 				setNumberOfCycles={setNumberOfCycles}

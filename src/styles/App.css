@@ -85,9 +85,11 @@ main {
 	justify-content: space-between;
 }
 
+/* SELECT COLOR THEME */
+
 .colorThemeSelect {
 	display: grid;
-	grid-template-columns: 200px;
+	grid-template-columns: 250px;
 	justify-content: center;
 	text-align: start;
 }
@@ -116,7 +118,7 @@ select::-ms-expand {
 	width: 100%;
 	border: 0.5px solid var(--secondary);
 	padding: 4px 8px;
-	font-size: 14px;
+	font-size: 16px;
 	cursor: pointer;
 	line-height: 24px;
 	background-color: var(--background);
@@ -150,13 +152,46 @@ select:focus + .focus {
 	border-radius: inherit;
 }
 
-/* HEADINGS */
+/* SELECT NUMBER OF CYCLES */
+
+.numberOfCycles {
+	display: grid;
+	grid-template-columns: 250px;
+	justify-content: center;
+}
+.setNumberOfCycles {
+	display: grid;
+	grid-template-columns: 60px 60px;
+	justify-content: center;
+	grid-column-gap: 10px;
+}
+
+.setBtn {
+	background-color: var(--primary);
+	color: var(--background);
+	border: 0;
+	width: 60px;
+}
+
+.numberOfCyclesInput {
+	border: 1px solid var(--primary);
+	background-color: var(--background);
+	color: var(--primary);
+	font-size: 16px;
+	padding: 8px;
+}
+
+/* HEADINGS AND LABELS */
 
 h1,
 h2,
 h3,
 h4 {
 	font-weight: 300;
+}
+
+label {
+	font-size: 18px;
 }
 
 /* BUTTONS */

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import SettingsContext from "../context/SettingsContext";
 
 type Props = {
@@ -13,13 +13,17 @@ const SetNumberOfCycles: React.FC<Props> = ({
 	const { cycles, setCycles, allWorkMinutes, allBreakMinutes } =
 		useContext(SettingsContext);
 
+	const numberOfCyclesRef = useRef(numberOfCycles);
+
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const inputValue: number = parseInt(e.target.value);
+		if (e.target.value === "") {
+			return;
+		}
+		const inputValue: number = parseInt(e.target.value, 10);
 		setNumberOfCycles(inputValue < 1 ? 1 : inputValue);
 	};
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
+	const updateCycles = (e: React.MouseEvent<HTMLButtonElement>) => {
 		let newCycleArray = [...cycles];
 
 		// User wants fewer cycles than what is currently in settingsInfo
@@ -41,21 +45,31 @@ const SetNumberOfCycles: React.FC<Props> = ({
 		}
 		localStorage.setItem("cycles", JSON.stringify(newCycleArray));
 		setCycles(newCycleArray);
+		numberOfCyclesRef.current = numberOfCycles;
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<label htmlFor="numberOfCycles">Number of Cycles</label>
-			<input
-				id="numberOfCycles"
-				name="numberOfCycles"
-				type="number"
-				value={numberOfCycles}
-				onChange={handleChange}
-				min={1}
-			/>
-			<input type="submit" value="Set" />
-		</form>
+		<div>
+			<h3>Set number of cycles</h3>
+			<div className="numberOfCycles">
+				<label htmlFor="numberOfCycles">
+					Cycles: {numberOfCyclesRef.current}
+				</label>
+				<div className="setNumberOfCycles">
+					<input
+						className="numberOfCyclesInput"
+						name="numberOfCycles"
+						type="number"
+						value={numberOfCycles}
+						onChange={handleChange}
+						min={1}
+					/>
+					<button className="setBtn" onClick={updateCycles}>
+						Set
+					</button>
+				</div>
+			</div>
+		</div>
 	);
 };
 
