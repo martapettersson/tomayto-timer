@@ -35,9 +35,9 @@ main {
 /* COLOR THEMES */
 
 .purpleDream {
-	--primary: #baafe6;
-	--secondary: #634ac6;
-	--background: #322567;
+	--primary: #cdc1ff;
+	--secondary: #644fb8;
+	--background: #402e85;
 }
 .darkNight {
 	--primary: #c6e1ff;
@@ -47,14 +47,14 @@ main {
 
 .solarPower {
 	--primary: #ff812d;
-	--secondary: #ffe372;
+	--secondary: #ffdd56;
 	--background: #fffff0;
 }
 
 .greenHaven {
-	--primary: #a2b5a4;
+	--primary: #b5e2b9;
 	--secondary: #567b56;
-	--background: #131f16;
+	--background: #19261d;
 }
 
 .bubbleGum {
@@ -64,9 +64,9 @@ main {
 }
 
 .earlGrey {
-	--primary: #676767;
-	--secondary: #a2a2a2;
-	--background: #d8d8d8;
+	--primary: #434343;
+	--secondary: #888888;
+	--background: #dcdcdc;
 }
 
 /* TIMER */
