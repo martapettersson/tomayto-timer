@@ -158,16 +158,18 @@ const Timer: React.FC = () => {
 			<h3>
 				Cycle {cycleNumber + 1}/{cycles.length}
 			</h3>
-			<CircularProgressbar
-				value={percentage}
-				text={`${minutes}:${seconds}`}
-				strokeWidth={2}
-				styles={buildStyles({
-					textColor: "var(--primary)",
-					pathColor: mode === Mode.WORK ? "var(--red)" : "var(--green)",
-					trailColor: "var(--secondary)",
-				})}
-			/>
+			<div className="timerClock">
+				<CircularProgressbar
+					value={percentage}
+					text={`${minutes}:${seconds}`}
+					strokeWidth={2}
+					styles={buildStyles({
+						textColor: "var(--primary)",
+						pathColor: mode === Mode.WORK ? "var(--red)" : "var(--green)",
+						trailColor: "var(--secondary)",
+					})}
+				/>
+			</div>
 			<div>
 				{isPaused ? (
 					<PlayButton

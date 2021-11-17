@@ -76,6 +76,12 @@ main {
 	padding-bottom: 50px;
 }
 
+.timerClock {
+	margin: 0 auto;
+	width: 300px;
+	height: 300px;
+}
+
 /* SETTINGS */
 
 .settingsContainer {
@@ -219,6 +225,8 @@ button {
 button.playAndPauseBtn {
 	background-color: transparent;
 	border: 0;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 /* SLIDERS */
