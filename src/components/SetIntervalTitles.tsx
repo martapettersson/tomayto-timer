@@ -37,22 +37,25 @@ const SetIntervalTitles: React.FC = () => {
 
 	return (
 		<div>
-			<h2>Set Interval Titles</h2>
-			<label>Work Interval</label>
-			<input
-				type="text"
-				name="customWorkTitle"
-				value={customWorkTitle ? customWorkTitle : ""}
-				onChange={updateIntervalTitles(Mode.WORK)}
-			/>
-			<br />
-			<label>Break Interval</label>
-			<input
-				type="text"
-				name="customBreakTitle"
-				value={customBreakTitle ? customBreakTitle : ""}
-				onChange={updateIntervalTitles(Mode.BREAK)}
-			/>
+			<h2>Customize Interval Titles</h2>
+			<div className="inputContainer">
+				<label>Work Title</label>
+				<input
+					className="input"
+					type="text"
+					name="customWorkTitle"
+					value={customWorkTitle ? customWorkTitle : ""}
+					onChange={updateIntervalTitles(Mode.WORK)}
+				/>
+				<label>Break Title</label>
+				<input
+					className="input"
+					type="text"
+					name="customBreakTitle"
+					value={customBreakTitle ? customBreakTitle : ""}
+					onChange={updateIntervalTitles(Mode.BREAK)}
+				/>
+			</div>
 		</div>
 	);
 };

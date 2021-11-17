@@ -23,7 +23,9 @@ main {
 
 .container {
 	padding-top: 50px;
-	max-width: 340px;
+	padding-left: 10px;
+	padding-right: 10px;
+	max-width: 400px;
 	margin: 0 auto;
 	text-align: center;
 	font-weight: 300;
@@ -70,7 +72,8 @@ main {
 /* TIMER */
 
 .timerContainer {
-	height: 100vh;
+	min-height: 100vh;
+	padding-bottom: 50px;
 }
 
 /* SETTINGS */
@@ -85,14 +88,22 @@ main {
 	justify-content: space-between;
 }
 
-/* SELECT COLOR THEME */
-
-.colorThemeSelect {
+.inputContainer {
 	display: grid;
 	grid-template-columns: 250px;
 	justify-content: center;
 	text-align: start;
 }
+
+.input {
+	border: 1px solid var(--secondary);
+	background-color: var(--background);
+	color: var(--primary);
+	font-size: 16px;
+	padding: 8px;
+}
+
+/* SELECT COLOR THEME */
 
 select {
 	appearance: none;
@@ -173,14 +184,6 @@ select:focus + .focus {
 	width: 60px;
 }
 
-.numberOfCyclesInput {
-	border: 1px solid var(--primary);
-	background-color: var(--background);
-	color: var(--primary);
-	font-size: 16px;
-	padding: 8px;
-}
-
 /* HEADINGS AND LABELS */
 
 h1,
@@ -188,6 +191,8 @@ h2,
 h3,
 h4 {
 	font-weight: 300;
+	margin-block-start: 0.5em;
+	margin-block-end: 0.5em;
 }
 
 label {
@@ -217,15 +222,15 @@ button.playAndPauseBtn {
 
 .slider {
 	box-sizing: content-box;
-	height: 40px;
-	border: 2px solid var(--secondary);
+	height: 32px;
+	border: 0.5px solid var(--secondary);
 	border-radius: 20px;
 }
 
 .thumb {
 	background-color: var(--primary);
 	cursor: pointer;
-	width: 40px;
-	height: 40px;
+	width: 32px;
+	height: 32px;
 	border-radius: 20px;
 }

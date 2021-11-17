@@ -12,7 +12,7 @@ const SetColorTheme: React.FC = () => {
 	return (
 		<div>
 			<h2>Color Theme</h2>
-			<div className="colorThemeSelect">
+			<div className="inputContainer">
 				<label htmlFor="colorTheme">Choose color theme</label>
 				<div className="select">
 					<select

@@ -50,14 +50,14 @@ const SetNumberOfCycles: React.FC<Props> = ({
 
 	return (
 		<div>
-			<h3>Set number of cycles</h3>
+			<h2>Set number of cycles</h2>
 			<div className="numberOfCycles">
 				<label htmlFor="numberOfCycles">
 					Cycles: {numberOfCyclesRef.current}
 				</label>
 				<div className="setNumberOfCycles">
 					<input
-						className="numberOfCyclesInput"
+						className="input"
 						name="numberOfCycles"
 						type="number"
 						value={numberOfCycles}
