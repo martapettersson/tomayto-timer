@@ -3,7 +3,7 @@ import "./styles/App.css";
 import Settings from "./components/Settings";
 import Timer from "./components/Timer";
 import SettingsContext from "./context/SettingsContext";
-import type { Cycle } from "./context/SettingsContext";
+import type { Cycle, ColorThemes } from "./context/SettingsContext";
 
 export const Pomodoro: Cycle[] = [
 	{ cycleNumber: 0, workMinutes: 25, breakMinutes: 5 },
@@ -19,7 +19,7 @@ const App: React.FC = () => {
 	const [customWorkTitle, setCustomWorkTitle] = useState<null | string>(null);
 	const [customBreakTitle, setCustomBreakTitle] = useState<null | string>(null);
 	const [volume, setVolume] = useState(0.5);
-	const [colorTheme, setColorTheme] = useState("purpleDream");
+	const [colorTheme, setColorTheme] = useState<ColorThemes>("purpleDream");
 
 	// Classic Pomodoro as default settings
 	const [cycles, setCycles] = useState<Cycle[]>(Pomodoro);
@@ -102,7 +102,7 @@ const App: React.FC = () => {
 		);
 		setCustomBreakTitle(localCustomBreakTitle);
 
-		const localColorTheme: string = JSON.parse(
+		const localColorTheme: ColorThemes = JSON.parse(
 			localStorage.getItem("colorTheme") || "[]"
 		);
 		setColorTheme(localColorTheme);

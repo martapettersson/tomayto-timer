@@ -8,6 +8,7 @@ import SetVolume from "./SetVolume";
 import SetIntervalTitles from "./SetIntervalTitles";
 import SetColorTheme from "./SetColorTheme";
 import type { Cycle } from "../context/SettingsContext";
+
 import { Pomodoro } from "../App";
 
 const Settings: React.FC = () => {

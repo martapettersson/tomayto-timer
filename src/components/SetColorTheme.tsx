@@ -1,12 +1,21 @@
 import React, { useContext } from "react";
 import SettingsContext from "../context/SettingsContext";
+import type { ColorThemes } from "../context/SettingsContext";
 
 const SetColorTheme: React.FC = () => {
+	const colorThemeOptions: ColorThemes[] = [
+		"purpleDream",
+		"darkNight",
+		"solarPower",
+		"greenHaven",
+		"bubbleGum",
+		"earlGrey",
+	];
 	const { colorTheme, setColorTheme } = useContext(SettingsContext);
 
 	const updateColorTheme = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		const inputValue: string = e.target.value;
-		setColorTheme(inputValue);
+		const inputValue = e.target.value;
+		setColorTheme(inputValue as ColorThemes);
 		localStorage.setItem("colorTheme", JSON.stringify(inputValue));
 	};
 	return (
@@ -20,12 +29,13 @@ const SetColorTheme: React.FC = () => {
 						value={colorTheme}
 						onChange={updateColorTheme}
 					>
-						<option value="purpleDream">Purple Dream</option>
-						<option value="darkNight">Dark Night</option>
-						<option value="solarPower">Solar Power</option>
-						<option value="greenHaven">Green Haven</option>
-						<option value="bubbleGum">Bubbel Gum</option>
-						<option value="earlGrey">Earl Grey</option>
+						{colorThemeOptions.map((option) => {
+							return (
+								<option key={colorThemeOptions.indexOf(option)} value={option}>
+									{option[0].toUpperCase() + option.slice(1)}
+								</option>
+							);
+						})}
 					</select>
 					<span className="focus"></span>
 				</div>

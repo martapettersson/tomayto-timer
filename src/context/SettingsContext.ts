@@ -8,6 +8,14 @@ export type Cycle = {
 	breakTitle?: string;
 };
 
+export type ColorThemes =
+	| "purpleDream"
+	| "darkNight"
+	| "solarPower"
+	| "greenHaven"
+	| "bubbleGum"
+	| "earlGrey";
+
 export type GlobalSettings = {
 	showSettings: boolean;
 	setShowSettings: (showSettings: boolean) => void;
@@ -23,8 +31,8 @@ export type GlobalSettings = {
 	setCustomWorkTitle: (customWorkTitle: string) => void;
 	customBreakTitle: string | null;
 	setCustomBreakTitle: (customBreakTitle: string) => void;
-	colorTheme: string;
-	setColorTheme: (colorTheme: string) => void;
+	colorTheme: ColorThemes;
+	setColorTheme: (colorTheme: ColorThemes) => void;
 };
 
 const SettingsContext = React.createContext<GlobalSettings>({
