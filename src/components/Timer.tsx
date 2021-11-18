@@ -15,6 +15,7 @@ import SettingsButton from "./SettingsButton";
 import breakAlarm from "../assets/break-alarm.mp3";
 import workAlarm from "../assets/work-alarm.mp3";
 import endAlarm from "../assets/end-alarm.mp3";
+import logo from "../assets/tomato.png";
 
 export enum Mode {
 	WORK = "work",
@@ -149,7 +150,8 @@ const Timer: React.FC = () => {
 
 	return (
 		<div className="timerContainer">
-			<h1>Tomayto Timer</h1>
+			<img src={logo} alt="Tomato" style={{ width: "50px" }} />
+			<h1 className="heading">Tomayto Timer</h1>
 			{mode === Mode.WORK ? (
 				<h2>{customWorkTitle ? customWorkTitle.toLowerCase() : mode}</h2>
 			) : (
