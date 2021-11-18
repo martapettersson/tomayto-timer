@@ -119,6 +119,7 @@ main {
 .input,
 input[type="text"] {
 	border: 1px solid var(--secondary);
+	border-radius: 0;
 	background-color: transparent;
 	color: var(--primary);
 	font-size: 16px;
