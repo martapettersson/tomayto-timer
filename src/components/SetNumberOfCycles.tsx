@@ -48,6 +48,15 @@ const SetNumberOfCycles: React.FC<Props> = ({
 		numberOfCyclesRef.current = numberOfCycles;
 	};
 
+	const handleReduce = (e: React.MouseEvent<HTMLButtonElement>) => {
+		if (numberOfCycles === 1) return;
+		setNumberOfCycles(numberOfCycles - 1);
+	};
+
+	const handleIncrease = (e: React.MouseEvent<HTMLButtonElement>) => {
+		setNumberOfCycles(numberOfCycles + 1);
+	};
+
 	return (
 		<div>
 			<h2>Set number of cycles</h2>
@@ -56,6 +65,9 @@ const SetNumberOfCycles: React.FC<Props> = ({
 					Cycles: {numberOfCyclesRef.current}
 				</label>
 				<div className="setNumberOfCycles">
+					<button className="btnCount" onClick={handleReduce}>
+						-
+					</button>
 					<input
 						className="input"
 						name="numberOfCycles"
@@ -64,11 +76,14 @@ const SetNumberOfCycles: React.FC<Props> = ({
 						onChange={handleChange}
 						min={1}
 					/>
-					<button className="setBtn" onClick={updateCycles}>
-						Set
+					<button className="btnCount" onClick={handleIncrease}>
+						+
 					</button>
 				</div>
 			</div>
+			<button className="setBtn" onClick={updateCycles}>
+				Set
+			</button>
 		</div>
 	);
 };
