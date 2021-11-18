@@ -51,8 +51,8 @@ const Settings: React.FC = () => {
 				numberOfCycles={numberOfCycles}
 				setNumberOfCycles={setNumberOfCycles}
 			/>
-			<SetAllCycleMinutes />
 			<SetIntervalTitles />
+			<SetAllCycleMinutes />
 			{cycles.map((cycle: Cycle) => {
 				return (
 					<SetCycleMinutes
