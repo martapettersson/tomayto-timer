@@ -50,6 +50,7 @@
 
 * {
 	box-sizing: border-box;
+	-webkit-appearance: none;
 }
 
 body {
@@ -135,7 +136,8 @@ input[type="text"]:focus {
 select {
 	background-color: transparent;
 	border: 0.5px solid var(--secondary);
-	padding: 6px 6px 6px 6px;
+	border-radius: 0;
+	padding: 0 0 0 8px;
 	margin: 0;
 	width: 100%;
 	font-family: inherit;
