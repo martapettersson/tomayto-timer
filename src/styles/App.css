@@ -133,6 +133,19 @@ input[type="text"]:focus {
 	background-color: transparent;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+	text-align: center;
+}
+
 select {
 	background-color: transparent;
 	border: 0.5px solid var(--secondary);
@@ -158,9 +171,10 @@ select:focus {
 	grid-template-columns: 250px;
 	justify-content: center;
 }
+
 .setNumberOfCycles {
 	display: grid;
-	grid-template-columns: 60px 60px;
+	grid-template-columns: 30px 50px 30px;
 	justify-content: center;
 	grid-column-gap: 10px;
 }
@@ -220,11 +234,16 @@ button.playAndPauseBtn:focus {
 	opacity: 0.7;
 }
 
-.setBtn {
+.btnCount {
+	width: 30px;
+	padding: 8px;
+	font-weight: 700;
+	font-size: 16px;
 	background-color: var(--primary);
 	color: var(--background);
-	border: 0;
-	width: 60px;
+}
+.setBtn {
+	margin-top: 10px;
 }
 
 /* SLIDERS */
