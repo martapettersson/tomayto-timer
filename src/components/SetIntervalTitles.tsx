@@ -42,6 +42,7 @@ const SetIntervalTitles: React.FC = () => {
 				<label>Work Title</label>
 				<input
 					className="input"
+					autoComplete="off"
 					type="text"
 					name="customWorkTitle"
 					value={customWorkTitle ? customWorkTitle : ""}
@@ -50,6 +51,7 @@ const SetIntervalTitles: React.FC = () => {
 				<label>Break Title</label>
 				<input
 					className="input"
+					autoComplete="off"
 					type="text"
 					name="customBreakTitle"
 					value={customBreakTitle ? customBreakTitle : ""}
