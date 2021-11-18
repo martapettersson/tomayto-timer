@@ -246,6 +246,18 @@ button.playAndPauseBtn:focus {
 	margin-top: 10px;
 }
 
+button.settingsBtn {
+	width: auto;
+	font-size: inherit;
+	line-height: 24px;
+}
+
+button.settingsBtn svg {
+	width: 24px;
+	float: left;
+	margin-right: 5px;
+}
+
 /* SLIDERS */
 
 .slider {
