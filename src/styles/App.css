@@ -12,12 +12,14 @@
 	--secondary: #644fb8;
 	--background: #1e1541;
 	--backgroundLight: #4d38a2;
+	--backgroundMozilla: #2e2067;
 }
 .darkNight {
 	--primary: #c6e1ff;
 	--secondary: #31547c;
 	--background: #001a38;
 	--backgroundLight: #153d6a;
+	--backgroundMozilla: #0d2d54;
 }
 
 .solarPower {
@@ -25,6 +27,7 @@
 	--secondary: #ffdd56;
 	--background: #ffffc9;
 	--backgroundLight: #fffff0;
+	--backgroundMozilla: #fffff0;
 }
 
 .greenHaven {
@@ -32,6 +35,7 @@
 	--secondary: #6ca791;
 	--background: #092b1e;
 	--backgroundLight: #2e7459;
+	--backgroundMozilla: #0c3f2c;
 }
 
 .bubbleGum {
@@ -39,6 +43,7 @@
 	--secondary: #fea6d0;
 	--background: #fecde7;
 	--backgroundLight: #ffecf6;
+	--backgroundMozilla: #ffecf6;
 }
 
 .earlGrey {
@@ -46,6 +51,7 @@
 	--secondary: #888888;
 	--background: #a9a9a9;
 	--backgroundLight: #dcdcdc;
+	--backgroundMozilla: #dcdcdc;
 }
 
 * {
@@ -68,6 +74,12 @@ main {
 		var(--backgroundLight) 0%,
 		var(--background) 99%
 	);
+}
+
+@-moz-document url-prefix() {
+	main {
+		background: var(--backgroundMozilla);
+	}
 }
 
 .container {
