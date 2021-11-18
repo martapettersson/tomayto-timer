@@ -5,6 +5,49 @@
 	--green: #3fd375;
 }
 
+/* COLOR THEMES */
+
+.purpleDream {
+	--primary: #cdc1ff;
+	--secondary: #644fb8;
+	--background: #1e1541;
+	--backgroundLight: #4d38a2;
+}
+.darkNight {
+	--primary: #c6e1ff;
+	--secondary: #31547c;
+	--background: #001a38;
+	--backgroundLight: #153d6a;
+}
+
+.solarPower {
+	--primary: #ff812d;
+	--secondary: #ffdd56;
+	--background: #ffffc9;
+	--backgroundLight: #fffff0;
+}
+
+.greenHaven {
+	--primary: #91d8bf;
+	--secondary: #6ca791;
+	--background: #092b1e;
+	--backgroundLight: #2e7459;
+}
+
+.bubbleGum {
+	--primary: #ff53ac;
+	--secondary: #fea6d0;
+	--background: #fecde7;
+	--backgroundLight: #ffecf6;
+}
+
+.earlGrey {
+	--primary: #434343;
+	--secondary: #888888;
+	--background: #a9a9a9;
+	--backgroundLight: #dcdcdc;
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -19,6 +62,11 @@ body {
 main {
 	color: var(--primary);
 	background-color: var(--background);
+	background: linear-gradient(
+		3deg,
+		var(--backgroundLight) 0%,
+		var(--background) 99%
+	);
 }
 
 .container {
@@ -30,43 +78,6 @@ main {
 	text-align: center;
 	font-weight: 300;
 	line-height: 36px;
-}
-
-/* COLOR THEMES */
-
-.purpleDream {
-	--primary: #cdc1ff;
-	--secondary: #644fb8;
-	--background: #402e85;
-}
-.darkNight {
-	--primary: #c6e1ff;
-	--secondary: #31547c;
-	--background: #001a38;
-}
-
-.solarPower {
-	--primary: #ff812d;
-	--secondary: #ffdd56;
-	--background: #fffff0;
-}
-
-.greenHaven {
-	--primary: #b5e2b9;
-	--secondary: #567b56;
-	--background: #19261d;
-}
-
-.bubbleGum {
-	--primary: #ff53ac;
-	--secondary: #fea6d0;
-	--background: #ffecf6;
-}
-
-.earlGrey {
-	--primary: #434343;
-	--secondary: #888888;
-	--background: #dcdcdc;
 }
 
 /* TIMER */
@@ -107,7 +118,7 @@ main {
 .input,
 input[type="text"] {
 	border: 1px solid var(--secondary);
-	background-color: var(--background);
+	background-color: transparent;
 	color: var(--primary);
 	font-size: 16px;
 	padding: 8px;
@@ -118,7 +129,7 @@ input[type="text"] {
 .input:focus,
 input[type="text"]:focus {
 	border: 2px solid var(--secondary);
-	background-color: var(--background);
+	background-color: transparent;
 }
 
 select {
@@ -140,8 +151,6 @@ select:focus {
 	border: 2px solid var(--secondary);
 }
 
-/* SELECT NUMBER OF CYCLES */
-
 .numberOfCycles {
 	display: grid;
 	grid-template-columns: 250px;
@@ -154,22 +163,20 @@ select:focus {
 	grid-column-gap: 10px;
 }
 
-.setBtn {
-	background-color: var(--primary);
-	color: var(--background);
-	border: 0;
-	width: 60px;
-}
-
 /* HEADINGS AND LABELS */
 
 h1,
 h2,
 h3,
 h4 {
-	font-weight: 300;
+	font-weight: 400;
 	margin-block-start: 0.5em;
 	margin-block-end: 0.5em;
+}
+.heading {
+	font-size: 36px;
+	font-weight: 700;
+	margin-block-end: 1.5em;
 }
 
 label {
@@ -181,7 +188,7 @@ label {
 button {
 	background-color: transparent;
 	color: var(--primary);
-	border: 0.5px solid var(--primary);
+	border: 0.5px solid var(--secondary);
 	display: inline-block;
 	width: 100px;
 	cursor: pointer;
@@ -189,6 +196,11 @@ button {
 	font-size: 14px;
 	text-transform: uppercase;
 	outline: none;
+}
+
+button:hover {
+	opacity: 0.7;
+	border: 1px solid var(--secondary);
 }
 
 button.playAndPauseBtn {
@@ -200,6 +212,18 @@ button.playAndPauseBtn {
 
 button:focus {
 	border: 2px solid var(--secondary);
+}
+
+button.playAndPauseBtn:focus {
+	border: none;
+	opacity: 0.7;
+}
+
+.setBtn {
+	background-color: var(--primary);
+	color: var(--background);
+	border: 0;
+	width: 60px;
 }
 
 /* SLIDERS */
@@ -220,5 +244,5 @@ button:focus {
 	outline: none;
 }
 .thumb:focus {
-	border: 2px solid var(--secondary);
+	border: 1px solid var(--secondary);
 }
