@@ -202,7 +202,7 @@ const Timer: React.FC = () => {
 						modeRef.current = Mode.WORK;
 					}}
 				>
-					Reset session
+					Reset all
 				</button>
 			</div>
 		</div>
