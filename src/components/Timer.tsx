@@ -168,7 +168,7 @@ const Timer: React.FC = () => {
 					})}
 				/>
 			</div>
-			<div>
+			<div className="playPauseContainer">
 				{isPaused ? (
 					<PlayButton
 						callback={() => {
@@ -182,6 +182,28 @@ const Timer: React.FC = () => {
 						}}
 					/>
 				)}
+			</div>
+			<div className="resetContainer">
+				<button
+					onClick={() => {
+						pauseTimer(true);
+						initializeTimer();
+					}}
+				>
+					Reset current
+				</button>
+				<button
+					onClick={() => {
+						pauseTimer(true);
+						initializeTimer();
+						setCycleNumber(0);
+						cycleNumberRef.current = 0;
+						setMode(Mode.WORK);
+						modeRef.current = Mode.WORK;
+					}}
+				>
+					Reset session
+				</button>
 			</div>
 		</div>
 	);

@@ -23,11 +23,11 @@
 }
 
 .solarPower {
-	--primary: #ff812d;
-	--secondary: #ffdd56;
-	--background: #ffffac;
-	--backgroundLight: #ffffe9;
-	--backgroundMozilla: #fffff0;
+	--primary: #ee680e;
+	--secondary: #ffda48;
+	--background: #ffffa7;
+	--backgroundLight: #ffffd3;
+	--backgroundMozilla: #ffffd3;
 }
 
 .greenHaven {
@@ -83,7 +83,7 @@ main {
 }
 
 .container {
-	padding-top: 80px;
+	padding-top: 70px;
 	padding-left: 10px;
 	padding-right: 10px;
 	max-width: 400px;
@@ -100,8 +100,8 @@ h2,
 h3,
 h4 {
 	font-weight: 400;
-	margin-block-start: 0.5em;
-	margin-block-end: 0.5em;
+	margin-block-start: 0.4em;
+	margin-block-end: 0.4em;
 }
 
 label {
@@ -163,7 +163,7 @@ div.navElement {
 	display: grid;
 	align-items: center;
 	height: 60px;
-	padding-left: 4px;
+	padding-left: 0px;
 }
 
 .logo {
@@ -224,22 +224,34 @@ h1.heading {
 	margin: 0 auto;
 	min-width: 200px;
 	min-height: 200px;
-	max-width: 250px;
-	max-height: 250px;
+	max-width: 260px;
+	max-height: 260px;
+}
+
+.playPauseContainer {
+	height: 80px;
+	display: grid;
+	justify-content: center;
+	align-items: center;
 }
 
 button.playAndPauseBtn {
 	background-color: transparent;
 	border: 0;
-	width: 80px;
-	height: 80px;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	width: 60px;
+	height: 60px;
+	padding: 0;
 }
 
 button.playAndPauseBtn:focus {
 	border: none;
 	opacity: 0.7;
+}
+
+.resetContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	justify-items: center;
 }
 
 /* SETTINGS */
