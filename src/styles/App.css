@@ -83,7 +83,7 @@ main {
 }
 
 .container {
-	padding-top: 50px;
+	padding-top: 80px;
 	padding-left: 10px;
 	padding-right: 10px;
 	max-width: 400px;
@@ -93,17 +93,134 @@ main {
 	line-height: 36px;
 }
 
+/* HEADINGS AND LABELS */
+
+h1,
+h2,
+h3,
+h4 {
+	font-weight: 400;
+	margin-block-start: 0.5em;
+	margin-block-end: 0.5em;
+}
+
+label {
+	font-size: 18px;
+}
+
+/* BUTTONS */
+
+button {
+	background-color: transparent;
+	color: var(--primary);
+	border: 0.5px solid var(--secondary);
+	display: inline-block;
+	width: 100px;
+	cursor: pointer;
+	padding: 8px;
+	font-size: 14px;
+	text-transform: uppercase;
+	outline: none;
+}
+
+button:hover {
+	opacity: 0.7;
+	border: 1px solid var(--secondary);
+}
+
+button:focus {
+	border: 2px solid var(--secondary);
+}
+
+/* NAVBAR */
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: var(--backgroundLight);
+	color: var(--primary);
+	height: 60px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+}
+
+li {
+	float: left;
+	cursor: pointer;
+}
+
+li .navElement {
+	display: block;
+	padding: 8px;
+	text-align: center;
+}
+
+div.navElement {
+	height: 60px;
+	width: 60px;
+}
+
+.floatRight {
+	float: right;
+}
+
+.settingsBtn {
+	border: 0;
+	padding: 0;
+	width: 40px;
+	height: 40px;
+	outline: none;
+}
+.settingsBtn:focus,
+.settingsBtn:hover {
+	opacity: 0.7;
+	border: 0;
+}
+
+.settingsBtn svg {
+	width: auto;
+	line-height: 40px;
+}
+
+.logo {
+	width: 60px;
+}
+
+.heading {
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
 /* TIMER */
 
 .timerContainer {
 	min-height: 100vh;
-	padding-bottom: 50px;
 }
 
 .timerClock {
 	margin: 0 auto;
-	width: 300px;
-	height: 300px;
+	min-width: 200px;
+	min-height: 200px;
+	max-width: 250px;
+	max-height: 250px;
+}
+
+button.playAndPauseBtn {
+	background-color: transparent;
+	border: 0;
+	width: 80px;
+	height: 80px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+button.playAndPauseBtn:focus {
+	border: none;
+	opacity: 0.7;
 }
 
 /* SETTINGS */
@@ -114,11 +231,7 @@ main {
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-row-gap: 20px;
-}
-
-.settingsTop {
-	display: flex;
-	justify-content: space-between;
+	justify-items: center;
 }
 
 .inputContainer {
@@ -135,6 +248,7 @@ input[type="text"] {
 	background-color: transparent;
 	color: var(--primary);
 	font-size: 16px;
+	font-family: inherit;
 	padding: 8px;
 	outline: none;
 	cursor: pointer;
@@ -157,6 +271,7 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
 	-moz-appearance: textfield;
 	text-align: center;
+	font-family: inherit;
 }
 
 select {
@@ -192,61 +307,6 @@ select:focus {
 	grid-column-gap: 10px;
 }
 
-/* HEADINGS AND LABELS */
-
-h1,
-h2,
-h3,
-h4 {
-	font-weight: 400;
-	margin-block-start: 0.5em;
-	margin-block-end: 0.5em;
-}
-.heading {
-	font-weight: 700;
-	text-transform: uppercase;
-}
-
-label {
-	font-size: 18px;
-}
-
-/* BUTTONS */
-
-button {
-	background-color: transparent;
-	color: var(--primary);
-	border: 0.5px solid var(--secondary);
-	display: inline-block;
-	width: 100px;
-	cursor: pointer;
-	padding: 8px;
-	font-size: 14px;
-	text-transform: uppercase;
-	outline: none;
-}
-
-button:hover {
-	opacity: 0.7;
-	border: 1px solid var(--secondary);
-}
-
-button.playAndPauseBtn {
-	background-color: transparent;
-	border: 0;
-	margin-top: 30px;
-	margin-bottom: 30px;
-}
-
-button:focus {
-	border: 2px solid var(--secondary);
-}
-
-button.playAndPauseBtn:focus {
-	border: none;
-	opacity: 0.7;
-}
-
 .btnCount {
 	width: 30px;
 	padding: 8px;
@@ -255,26 +315,15 @@ button.playAndPauseBtn:focus {
 	background-color: var(--primary);
 	color: var(--background);
 }
-.setBtn {
+.setNumberOfCyclesBtn {
 	margin-top: 10px;
-}
-
-button.settingsBtn {
-	width: auto;
-	font-size: inherit;
-	line-height: 24px;
-}
-
-button.settingsBtn svg {
-	width: 24px;
-	float: left;
-	margin-right: 5px;
 }
 
 /* SLIDERS */
 
 .slider {
 	box-sizing: content-box;
+	width: 250px;
 	height: 28px;
 	border: 0.5px solid var(--secondary);
 	border-radius: 20px;

@@ -81,7 +81,7 @@ const SetNumberOfCycles: React.FC<Props> = ({
 					</button>
 				</div>
 			</div>
-			<button className="setBtn" onClick={updateCycles}>
+			<button className="setNumberOfCyclesBtn" onClick={updateCycles}>
 				Set
 			</button>
 		</div>

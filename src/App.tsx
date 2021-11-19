@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./styles/App.css";
+import Navbar from "./components/Navbar";
 import Settings from "./components/Settings";
 import Timer from "./components/Timer";
 import SettingsContext from "./context/SettingsContext";
@@ -110,30 +111,31 @@ const App: React.FC = () => {
 
 	return (
 		<main className={colorTheme}>
-			<div className="container">
-				<SettingsContext.Provider
-					value={{
-						showSettings,
-						setShowSettings,
-						cycles,
-						setCycles,
-						allWorkMinutes,
-						setAllWorkMinutes,
-						allBreakMinutes,
-						setAllBreakMinutes,
-						volume,
-						setVolume,
-						customWorkTitle,
-						setCustomWorkTitle,
-						customBreakTitle,
-						setCustomBreakTitle,
-						colorTheme,
-						setColorTheme,
-					}}
-				>
+			<SettingsContext.Provider
+				value={{
+					showSettings,
+					setShowSettings,
+					cycles,
+					setCycles,
+					allWorkMinutes,
+					setAllWorkMinutes,
+					allBreakMinutes,
+					setAllBreakMinutes,
+					volume,
+					setVolume,
+					customWorkTitle,
+					setCustomWorkTitle,
+					customBreakTitle,
+					setCustomBreakTitle,
+					colorTheme,
+					setColorTheme,
+				}}
+			>
+				<Navbar />
+				<div className="container">
 					{showSettings ? <Settings /> : <Timer />}
-				</SettingsContext.Provider>
-			</div>
+				</div>
+			</SettingsContext.Provider>
 		</main>
 	);
 };

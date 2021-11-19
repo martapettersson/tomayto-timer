@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import SettingsContext from "../context/SettingsContext";
-import BackButton from "./BackButton";
 import SetCycleMinutes from "./SetCycleMinutes";
 import SetNumberOfCycles from "./SetNumberOfCycles";
 import SetAllCycleMinutes from "./SetAllCycleMinutes";
@@ -14,7 +13,6 @@ import { Pomodoro } from "../App";
 const Settings: React.FC = () => {
 	const {
 		cycles,
-		setShowSettings,
 		setCycles,
 		setVolume,
 		setAllWorkMinutes,
@@ -40,11 +38,8 @@ const Settings: React.FC = () => {
 
 	return (
 		<div className="settingsContainer">
-			<div className="settingsTop">
-				<BackButton callback={() => setShowSettings(false)} />
-				<button onClick={reset}>Reset</button>
-			</div>
 			<h1>Settings</h1>
+			<button onClick={reset}>Reset all</button>
 			<SetColorTheme />
 			<SetVolume />
 			<SetNumberOfCycles

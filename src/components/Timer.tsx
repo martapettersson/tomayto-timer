@@ -11,11 +11,9 @@ import "react-circular-progressbar/dist/styles.css";
 import SettingsContext from "../context/SettingsContext";
 import PauseButton from "./PauseButton";
 import PlayButton from "./PlayButton";
-import SettingsButton from "./SettingsButton";
 import breakAlarm from "../assets/break-alarm.mp3";
 import workAlarm from "../assets/work-alarm.mp3";
 import endAlarm from "../assets/end-alarm.mp3";
-import logo from "../assets/tomato.png";
 
 export enum Mode {
 	WORK = "work",
@@ -23,7 +21,7 @@ export enum Mode {
 }
 
 const Timer: React.FC = () => {
-	const { customWorkTitle, customBreakTitle, volume, cycles, setShowSettings } =
+	const { customWorkTitle, customBreakTitle, volume, cycles } =
 		useContext(SettingsContext);
 
 	const [isPaused, setIsPaused] = useState(true);
@@ -150,8 +148,6 @@ const Timer: React.FC = () => {
 
 	return (
 		<div className="timerContainer">
-			<img src={logo} alt="Tomato" style={{ width: "50px" }} />
-			<h1 className="heading">Tomayto Timer</h1>
 			{mode === Mode.WORK ? (
 				<h2>{customWorkTitle ? customWorkTitle.toLowerCase() : mode}</h2>
 			) : (
@@ -186,9 +182,6 @@ const Timer: React.FC = () => {
 						}}
 					/>
 				)}
-			</div>
-			<div>
-				<SettingsButton callback={() => setShowSettings(true)} />
 			</div>
 		</div>
 	);
