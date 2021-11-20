@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 
 :root {
 	--red: #f54e59;
@@ -113,7 +114,7 @@ label {
 button {
 	background-color: transparent;
 	color: var(--primary);
-	border: 0.5px solid var(--secondary);
+	border: 1px solid var(--primary);
 	display: inline-block;
 	width: 100px;
 	cursor: pointer;
@@ -125,7 +126,7 @@ button {
 
 button:hover {
 	opacity: 0.7;
-	border: 1px solid var(--secondary);
+	border: 1px solid var(--primary);
 }
 
 button:focus {
@@ -167,7 +168,7 @@ div.navElement {
 }
 
 .logo {
-	width: 60px;
+	width: 58px;
 }
 
 .logoBtn {
@@ -175,14 +176,14 @@ div.navElement {
 	width: fit-content;
 	height: fit-content;
 	padding: 0;
+	padding-left: 3px;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 h1.heading {
 	text-transform: uppercase;
 	font-size: 18px;
 	font-weight: 700;
-	font-family: "Fredoka One", cursive;
+	font-family: "Fredoka One", sans-serif;
 }
 
 .floatRight {
@@ -274,7 +275,7 @@ button.playAndPauseBtn:focus {
 
 .input,
 input[type="text"] {
-	border: 1px solid var(--secondary);
+	border: 1px solid var(--primary);
 	border-radius: 0;
 	background-color: transparent;
 	color: var(--primary);
@@ -307,7 +308,7 @@ input[type="number"] {
 
 select {
 	background-color: transparent;
-	border: 0.5px solid var(--secondary);
+	border: 1px solid var(--primary);
 	border-radius: 0;
 	padding: 0 0 0 8px;
 	margin: 0;
@@ -356,7 +357,7 @@ select:focus {
 	box-sizing: content-box;
 	width: 250px;
 	height: 28px;
-	border: 0.5px solid var(--secondary);
+	border: 1px solid var(--primary);
 	border-radius: 20px;
 }
 
@@ -369,5 +370,5 @@ select:focus {
 	outline: none;
 }
 .thumb:focus {
-	border: 1px solid var(--secondary);
+	border: 1px solid var(--primary);
 }
