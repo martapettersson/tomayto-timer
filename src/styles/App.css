@@ -87,11 +87,11 @@ main {
 	padding-top: 70px;
 	padding-left: 10px;
 	padding-right: 10px;
-	max-width: 400px;
+	width: 100vw;
 	margin: 0 auto;
 	text-align: center;
 	font-weight: 300;
-	line-height: 36px;
+	line-height: 2em;
 }
 
 /* HEADINGS AND LABELS */
@@ -101,8 +101,8 @@ h2,
 h3,
 h4 {
 	font-weight: 400;
-	margin-block-start: 0.4em;
-	margin-block-end: 0.4em;
+	margin-block-start: 0.2em;
+	margin-block-end: 0.2em;
 }
 
 label {
@@ -176,7 +176,7 @@ div.navElement {
 	width: fit-content;
 	height: fit-content;
 	padding: 0;
-	padding-left: 3px;
+	padding-left: 4px;
 }
 
 h1.heading {
@@ -218,22 +218,30 @@ h1.heading {
 /* TIMER */
 
 .timerContainer {
-	min-height: 100vh;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
 }
 
-.timerClock {
+.timerTextContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.timerClockContainer {
 	margin: 0 auto;
-	min-width: 200px;
-	min-height: 200px;
-	max-width: 260px;
-	max-height: 260px;
+	display: flex;
+	padding: 0px 40px 0px 40px;
 }
 
-.playPauseContainer {
-	height: 80px;
+.timerPlayPauseContainer {
+	margin: 0 auto;
+	padding: 12px;
 	display: grid;
-	justify-content: center;
-	align-items: center;
+	grid-template-columns: 1fr;
+	justify-items: center;
 }
 
 button.playAndPauseBtn {
@@ -249,10 +257,12 @@ button.playAndPauseBtn:focus {
 	opacity: 0.7;
 }
 
-.resetContainer {
+.timerResetContainer {
+	padding: 6px;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	justify-items: center;
+	grid-template-columns: 100px 100px;
+	grid-column-gap: 20px;
+	justify-content: center;
 }
 
 /* SETTINGS */

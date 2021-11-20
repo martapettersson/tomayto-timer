@@ -148,15 +148,17 @@ const Timer: React.FC = () => {
 
 	return (
 		<div className="timerContainer">
-			{mode === Mode.WORK ? (
-				<h2>{customWorkTitle ? customWorkTitle.toLowerCase() : mode}</h2>
-			) : (
-				<h2>{customBreakTitle ? customBreakTitle.toLowerCase() : mode}</h2>
-			)}
-			<h3>
-				Cycle {cycleNumber + 1}/{cycles.length}
-			</h3>
-			<div className="timerClock">
+			<div className="timerTextContainer">
+				{mode === Mode.WORK ? (
+					<h2>{customWorkTitle ? customWorkTitle.toLowerCase() : mode}</h2>
+				) : (
+					<h2>{customBreakTitle ? customBreakTitle.toLowerCase() : mode}</h2>
+				)}
+				<h3>
+					Cycle {cycleNumber + 1}/{cycles.length}
+				</h3>
+			</div>
+			<div className="timerClockContainer">
 				<CircularProgressbar
 					value={percentage}
 					text={`${minutes}:${seconds}`}
@@ -168,7 +170,7 @@ const Timer: React.FC = () => {
 					})}
 				/>
 			</div>
-			<div className="playPauseContainer">
+			<div className="timerPlayPauseContainer">
 				{isPaused ? (
 					<PlayButton
 						callback={() => {
@@ -183,14 +185,14 @@ const Timer: React.FC = () => {
 					/>
 				)}
 			</div>
-			<div className="resetContainer">
+			<div className="timerResetContainer">
 				<button
 					onClick={() => {
 						pauseTimer(true);
 						initializeTimer();
 					}}
 				>
-					Reset current
+					Reset
 				</button>
 				<button
 					onClick={() => {
