@@ -114,7 +114,7 @@ label {
 button {
 	background-color: transparent;
 	color: var(--primary);
-	border: 1px solid var(--primary);
+	border: 1px solid var(--secondary);
 	display: inline-block;
 	width: 100px;
 	cursor: pointer;
@@ -133,252 +133,283 @@ button:focus {
 	border: 2px solid var(--secondary);
 }
 
-/* NAVBAR */
+@media (min-width: 200px) {
+	/* NAVBAR */
 
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: var(--backgroundLight);
-	color: var(--primary);
-	height: 60px;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 10;
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		background-color: var(--backgroundLight);
+		color: var(--primary);
+		height: 50px;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 10;
+	}
+
+	li {
+		float: left;
+		cursor: pointer;
+	}
+
+	li .navElement {
+		display: block;
+		padding: 8px;
+		text-align: center;
+	}
+
+	div.navElement {
+		display: grid;
+		align-items: center;
+		height: 50px;
+		padding-left: 0px;
+	}
+
+	.logo {
+		width: 48px;
+	}
+
+	.logoBtn {
+		border: 0;
+		width: fit-content;
+		height: fit-content;
+		padding: 0;
+		padding-left: 4px;
+	}
+
+	h1.heading {
+		text-transform: uppercase;
+		font-size: 16px;
+		font-weight: 700;
+		font-family: "Fredoka One", sans-serif;
+	}
+
+	.floatRight {
+		float: right;
+	}
+
+	.settingsBtn {
+		border: 0;
+		padding: 0;
+		width: 30px;
+		height: 30px;
+		outline: none;
+	}
+
+	.settingsBtn svg {
+		width: auto;
+		line-height: 30px;
+	}
+
+	.navElement:hover {
+		opacity: 0.7;
+	}
+
+	.logoBtn:focus,
+	.logoBtn:hover,
+	.settingsBtn:focus,
+	.settingsBtn:hover {
+		opacity: 0.7;
+		border: 0;
+	}
+
+	/* TIMER */
+
+	.timerContainer {
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+	}
+
+	.timerTextContainer {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.timerClockContainer {
+		margin: 0 auto;
+		display: flex;
+		padding: 0px 30px 0px 30px;
+	}
+
+	.timerPlayPauseContainer {
+		margin: 0 auto;
+		padding: 12px;
+		display: grid;
+		grid-template-columns: 1fr;
+		justify-items: center;
+	}
+
+	button.playAndPauseBtn {
+		background-color: transparent;
+		border: 0;
+		width: 60px;
+		height: 60px;
+		padding: 0;
+	}
+
+	button.playAndPauseBtn:focus {
+		border: none;
+		opacity: 0.7;
+	}
+
+	.timerResetContainer {
+		padding: 6px;
+		display: grid;
+		grid-template-columns: 100px 100px;
+		grid-column-gap: 20px;
+		justify-content: center;
+	}
+
+	/* SETTINGS */
+
+	.settingsContainer {
+		height: fit-content;
+		padding-bottom: 50px;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-row-gap: 20px;
+		justify-items: center;
+	}
+
+	.inputContainer {
+		display: grid;
+		grid-template-columns: 250px;
+		justify-content: center;
+		text-align: start;
+	}
+
+	.input,
+	input[type="text"] {
+		border: 1px solid var(--secondary);
+		border-radius: 0;
+		background-color: transparent;
+		color: var(--primary);
+		font-size: 16px;
+		font-family: inherit;
+		padding: 8px;
+		outline: none;
+		cursor: pointer;
+	}
+
+	.input:focus,
+	input[type="text"]:focus {
+		border: 2px solid var(--secondary);
+		background-color: transparent;
+	}
+
+	/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	/* Firefox */
+	input[type="number"] {
+		-moz-appearance: textfield;
+		text-align: center;
+		font-family: inherit;
+	}
+
+	select {
+		background-color: transparent;
+		border: 1px solid var(--secondary);
+		border-radius: 0;
+		padding: 0 0 0 8px;
+		margin: 0;
+		width: 100%;
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+		cursor: pointer;
+		line-height: inherit;
+		outline: none;
+		color: inherit;
+	}
+
+	select:focus {
+		border: 2px solid var(--secondary);
+	}
+
+	.numberOfCycles {
+		display: grid;
+		grid-template-columns: 250px;
+		justify-content: center;
+	}
+
+	.setNumberOfCycles {
+		display: grid;
+		grid-template-columns: 30px 50px 30px;
+		justify-content: center;
+		grid-column-gap: 10px;
+	}
+
+	.btnCount {
+		width: 30px;
+		padding: 8px;
+		font-weight: 700;
+		font-size: 16px;
+		background-color: var(--primary);
+		color: var(--background);
+	}
+	.setNumberOfCyclesBtn {
+		margin-top: 10px;
+	}
+
+	/* SLIDERS */
+
+	.slider {
+		box-sizing: content-box;
+		width: 250px;
+		height: 28px;
+		border: 1px solid var(--secondary);
+		border-radius: 20px;
+	}
+
+	.thumb {
+		background-color: var(--primary);
+		cursor: pointer;
+		width: 28px;
+		height: 28px;
+		border-radius: 20px;
+		outline: none;
+	}
+	.thumb:focus {
+		border: 1px solid var(--secondary);
+	}
 }
 
-li {
-	float: left;
-	cursor: pointer;
-}
+@media (min-width: 500px) {
+	/* NAVBAR */
 
-li .navElement {
-	display: block;
-	padding: 8px;
-	text-align: center;
-}
+	ul {
+		height: 60px;
+	}
 
-div.navElement {
-	display: grid;
-	align-items: center;
-	height: 60px;
-	padding-left: 0px;
-}
+	div.navElement {
+		height: 60px;
+	}
 
-.logo {
-	width: 58px;
-}
+	.logo {
+		width: 58px;
+	}
 
-.logoBtn {
-	border: 0;
-	width: fit-content;
-	height: fit-content;
-	padding: 0;
-	padding-left: 4px;
-}
+	h1.heading {
+		font-size: 18px;
+	}
 
-h1.heading {
-	text-transform: uppercase;
-	font-size: 18px;
-	font-weight: 700;
-	font-family: "Fredoka One", sans-serif;
-}
+	.settingsBtn {
+		width: 40px;
+		height: 40px;
+	}
 
-.floatRight {
-	float: right;
-}
-
-.settingsBtn {
-	border: 0;
-	padding: 0;
-	width: 40px;
-	height: 40px;
-	outline: none;
-}
-
-.settingsBtn svg {
-	width: auto;
-	line-height: 40px;
-}
-
-.navElement:hover {
-	opacity: 0.7;
-}
-
-.logoBtn:focus,
-.logoBtn:hover,
-.settingsBtn:focus,
-.settingsBtn:hover {
-	opacity: 0.7;
-	border: 0;
-}
-
-/* TIMER */
-
-.timerContainer {
-	width: 100%;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: start;
-}
-
-.timerTextContainer {
-	display: flex;
-	flex-direction: column;
-}
-
-.timerClockContainer {
-	margin: 0 auto;
-	display: flex;
-	padding: 0px 40px 0px 40px;
-}
-
-.timerPlayPauseContainer {
-	margin: 0 auto;
-	padding: 12px;
-	display: grid;
-	grid-template-columns: 1fr;
-	justify-items: center;
-}
-
-button.playAndPauseBtn {
-	background-color: transparent;
-	border: 0;
-	width: 60px;
-	height: 60px;
-	padding: 0;
-}
-
-button.playAndPauseBtn:focus {
-	border: none;
-	opacity: 0.7;
-}
-
-.timerResetContainer {
-	padding: 6px;
-	display: grid;
-	grid-template-columns: 100px 100px;
-	grid-column-gap: 20px;
-	justify-content: center;
-}
-
-/* SETTINGS */
-
-.settingsContainer {
-	height: fit-content;
-	padding-bottom: 50px;
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-row-gap: 20px;
-	justify-items: center;
-}
-
-.inputContainer {
-	display: grid;
-	grid-template-columns: 250px;
-	justify-content: center;
-	text-align: start;
-}
-
-.input,
-input[type="text"] {
-	border: 1px solid var(--primary);
-	border-radius: 0;
-	background-color: transparent;
-	color: var(--primary);
-	font-size: 16px;
-	font-family: inherit;
-	padding: 8px;
-	outline: none;
-	cursor: pointer;
-}
-
-.input:focus,
-input[type="text"]:focus {
-	border: 2px solid var(--secondary);
-	background-color: transparent;
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-}
-
-/* Firefox */
-input[type="number"] {
-	-moz-appearance: textfield;
-	text-align: center;
-	font-family: inherit;
-}
-
-select {
-	background-color: transparent;
-	border: 1px solid var(--primary);
-	border-radius: 0;
-	padding: 0 0 0 8px;
-	margin: 0;
-	width: 100%;
-	font-family: inherit;
-	font-size: inherit;
-	font-weight: inherit;
-	cursor: pointer;
-	line-height: inherit;
-	outline: none;
-	color: inherit;
-}
-
-select:focus {
-	border: 2px solid var(--secondary);
-}
-
-.numberOfCycles {
-	display: grid;
-	grid-template-columns: 250px;
-	justify-content: center;
-}
-
-.setNumberOfCycles {
-	display: grid;
-	grid-template-columns: 30px 50px 30px;
-	justify-content: center;
-	grid-column-gap: 10px;
-}
-
-.btnCount {
-	width: 30px;
-	padding: 8px;
-	font-weight: 700;
-	font-size: 16px;
-	background-color: var(--primary);
-	color: var(--background);
-}
-.setNumberOfCyclesBtn {
-	margin-top: 10px;
-}
-
-/* SLIDERS */
-
-.slider {
-	box-sizing: content-box;
-	width: 250px;
-	height: 28px;
-	border: 1px solid var(--primary);
-	border-radius: 20px;
-}
-
-.thumb {
-	background-color: var(--primary);
-	cursor: pointer;
-	width: 28px;
-	height: 28px;
-	border-radius: 20px;
-	outline: none;
-}
-.thumb:focus {
-	border: 1px solid var(--primary);
+	.settingsBtn svg {
+		line-height: 40px;
+	}
 }
