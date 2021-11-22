@@ -8,8 +8,6 @@ import SetIntervalTitles from "./SetIntervalTitles";
 import SetColorTheme from "./SetColorTheme";
 import type { Cycle } from "../context/SettingsContext";
 
-import { Pomodoro } from "../App";
-
 const Settings: React.FC = () => {
 	const {
 		cycles,
@@ -25,11 +23,16 @@ const Settings: React.FC = () => {
 	const [numberOfCycles, setNumberOfCycles] = useState(cycles.length);
 
 	const reset = () => {
-		setCycles(Pomodoro);
+		setCycles([
+			{ cycleNumber: 0, workMinutes: 25, breakMinutes: 5 },
+			{ cycleNumber: 1, workMinutes: 25, breakMinutes: 5 },
+			{ cycleNumber: 2, workMinutes: 25, breakMinutes: 5 },
+			{ cycleNumber: 3, workMinutes: 25, breakMinutes: 20 },
+		]);
 		setVolume(0.5);
 		setAllWorkMinutes(25);
 		setAllBreakMinutes(5);
-		setNumberOfCycles(Pomodoro.length);
+		setNumberOfCycles(4);
 		setCustomWorkTitle("");
 		setCustomBreakTitle("");
 		setColorTheme("purpleDream");
