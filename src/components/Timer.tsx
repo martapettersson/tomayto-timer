@@ -45,7 +45,11 @@ const Timer: React.FC = () => {
 	});
 
 	const initializeTimer = useCallback(() => {
-		secondsLeftRef.current = cycles[cycleNumberRef.current].workMinutes * 60;
+		const cycleMinutes: number =
+			modeRef.current === Mode.WORK
+				? cycles[cycleNumberRef.current].workMinutes
+				: cycles[cycleNumberRef.current].breakMinutes;
+		secondsLeftRef.current = cycleMinutes * 60;
 		setSecondsLeft(secondsLeftRef.current);
 	}, [cycles]);
 
@@ -197,11 +201,11 @@ const Timer: React.FC = () => {
 				<button
 					onClick={() => {
 						pauseTimer(true);
-						initializeTimer();
 						setCycleNumber(0);
 						cycleNumberRef.current = 0;
 						setMode(Mode.WORK);
 						modeRef.current = Mode.WORK;
+						initializeTimer();
 					}}
 				>
 					Reset all
