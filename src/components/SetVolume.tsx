@@ -5,9 +5,9 @@ import SettingsContext from "../context/SettingsContext";
 const SetVolume: React.FC = () => {
 	const { volume, setVolume } = useContext(SettingsContext);
 
-	const updateAlarmVolume = (value: number) => {
-		setVolume(value);
-		localStorage.setItem("volume", JSON.stringify(value));
+	const updateAlarmVolume = (inputValue: number) => {
+		setVolume(inputValue);
+		localStorage.setItem("volume", JSON.stringify(inputValue));
 	};
 
 	return (
