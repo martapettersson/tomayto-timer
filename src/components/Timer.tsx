@@ -24,12 +24,12 @@ const Timer: React.FC = () => {
 	const { customWorkTitle, customBreakTitle, volume, cycles } =
 		useContext(SettingsContext);
 
-	const [isPaused, setIsPaused] = useState(true);
+	const [isPaused, setIsPaused] = useState<boolean>(true);
 	const [mode, setMode] = useState<Mode>(Mode.WORK);
-	const [cycleNumber, setCycleNumber] = useState(0);
-	const [secondsLeft, setSecondsLeft] = useState(0);
-	const [countDownDate, setCountDownDate] = useState(0);
-	const [distance, setDistance] = useState(0);
+	const [cycleNumber, setCycleNumber] = useState<number>(0);
+	const [secondsLeft, setSecondsLeft] = useState<number>(0);
+	const [countDownDate, setCountDownDate] = useState<number>(0);
+	const [distance, setDistance] = useState<number>(0);
 
 	const isPausedRef = useRef(isPaused);
 	const modeRef = useRef(mode);
