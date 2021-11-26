@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import ReactSlider from "react-slider";
 import SettingsContext from "../context/SettingsContext";
 import { Mode } from "./Timer";
+import type { Cycle } from "../context/SettingsContext";
 
 type Props = {
 	cycleNumber: number;
@@ -13,21 +14,21 @@ const SetCycleMinutes: React.FC<Props> = ({ cycleNumber }) => {
 	const cycle = cycles[cycleNumber];
 
 	const updateCycleMinutes =
-		(cycleNumber: number, mode: Mode) => (value: number) => {
-			const newCycleValue =
+		(cycleNumber: number, mode: Mode) => (inputMinutes: number) => {
+			const newCycleObject: Cycle =
 				mode === Mode.WORK
 					? {
 							cycleNumber,
-							workMinutes: value,
+							workMinutes: inputMinutes,
 							breakMinutes: cycle.breakMinutes,
 					  }
 					: {
 							cycleNumber,
 							workMinutes: cycle.workMinutes,
-							breakMinutes: value,
+							breakMinutes: inputMinutes,
 					  };
 			let newCyclesArray = [...cycles];
-			newCyclesArray[cycleNumber] = newCycleValue;
+			newCyclesArray[cycleNumber] = newCycleObject;
 			localStorage.setItem("cycles", JSON.stringify(newCyclesArray));
 			setCycles(newCyclesArray);
 		};
