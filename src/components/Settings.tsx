@@ -20,9 +20,9 @@ const Settings: React.FC = () => {
 		setColorTheme,
 	} = useContext(SettingsContext);
 
-	const [numberOfCycles, setNumberOfCycles] = useState(cycles.length);
+	const [numberOfCycles, setNumberOfCycles] = useState<number>(cycles.length);
 
-	const reset = () => {
+	const resetSettings = () => {
 		setCycles([
 			{ cycleNumber: 0, workMinutes: 25, breakMinutes: 5 },
 			{ cycleNumber: 1, workMinutes: 25, breakMinutes: 5 },
@@ -42,7 +42,7 @@ const Settings: React.FC = () => {
 	return (
 		<div className="settingsContainer">
 			<h1>Settings</h1>
-			<button onClick={reset}>Reset all</button>
+			<button onClick={resetSettings}>Reset all</button>
 			<SetColorTheme />
 			<SetVolume />
 			<SetNumberOfCycles
