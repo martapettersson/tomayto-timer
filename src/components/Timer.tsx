@@ -78,6 +78,10 @@ const Timer: React.FC = () => {
 		setIsPaused(parameter);
 		isPausedRef.current = parameter;
 	};
+	const countdownSeconds = () => {
+		secondsLeftRef.current--;
+		setSecondsLeft(secondsLeftRef.current);
+	};
 
 	const switchMode = useCallback(() => {
 		// +1 cycleNumber after break since 1 cycle is done
@@ -154,6 +158,7 @@ const Timer: React.FC = () => {
 				}
 			};
 			handleSession(distanceRef.current, modeRef.current, cycles.length);
+			countdownSeconds();
 		}, 1000);
 
 		return () => clearInterval(interval);
