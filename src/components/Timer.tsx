@@ -26,13 +26,17 @@ const Timer: React.FC = () => {
 
 	const [isPaused, setIsPaused] = useState(true);
 	const [mode, setMode] = useState<Mode>(Mode.WORK);
-	const [secondsLeft, setSecondsLeft] = useState(0);
 	const [cycleNumber, setCycleNumber] = useState(0);
+	const [secondsLeft, setSecondsLeft] = useState(0);
+	const [countDownDate, setCountDownDate] = useState(0);
+	const [distance, setDistance] = useState(0);
 
 	const isPausedRef = useRef(isPaused);
 	const modeRef = useRef(mode);
-	const secondsLeftRef = useRef(secondsLeft);
 	const cycleNumberRef = useRef(cycleNumber);
+	const secondsLeftRef = useRef(secondsLeft);
+	const countDownDateRef = useRef(countDownDate);
+	const distanceRef = useRef(distance);
 
 	const [playBreakAlarm] = useSound(breakAlarm, {
 		volume: volume,
@@ -44,19 +48,31 @@ const Timer: React.FC = () => {
 		volume: volume,
 	});
 
+	const createNewCountDownDate = () => {
+		const newCountDownDate: Date = new Date();
+		newCountDownDate.setSeconds(
+			newCountDownDate.getSeconds() + secondsLeftRef.current
+		);
+		const newCountDownDateTime: number = newCountDownDate.getTime();
+
+		countDownDateRef.current = newCountDownDateTime;
+		setCountDownDate(newCountDownDateTime);
+	};
+
 	const initializeTimer = useCallback(() => {
 		const cycleMinutes: number =
 			modeRef.current === Mode.WORK
 				? cycles[cycleNumberRef.current].workMinutes
 				: cycles[cycleNumberRef.current].breakMinutes;
+
 		secondsLeftRef.current = cycleMinutes * 60;
 		setSecondsLeft(secondsLeftRef.current);
-	}, [cycles]);
 
-	const countdownSeconds = () => {
-		secondsLeftRef.current--;
-		setSecondsLeft(secondsLeftRef.current);
-	};
+		createNewCountDownDate();
+
+		distanceRef.current = 0;
+		setDistance(distanceRef.current);
+	}, [cycles]);
 
 	const pauseTimer = (parameter: boolean) => {
 		setIsPaused(parameter);
@@ -83,7 +99,13 @@ const Timer: React.FC = () => {
 
 		setSecondsLeft(nextSeconds);
 		secondsLeftRef.current = nextSeconds;
-	}, [cycles]);
+
+		createNewCountDownDate();
+
+		const alarmSound =
+			modeRef.current === Mode.WORK ? playBreakAlarm() : playWorkAlarm();
+		return alarmSound;
+	}, [cycles, playBreakAlarm, playWorkAlarm]);
 
 	const endOfSession = useCallback(() => {
 		pauseTimer(true);
@@ -108,45 +130,60 @@ const Timer: React.FC = () => {
 				return;
 			}
 
-			// All cycles are done
-			if (
-				cycleNumberRef.current === cycles.length - 1 &&
-				modeRef.current === Mode.BREAK &&
-				secondsLeftRef.current === 0
-			) {
-				endOfSession();
-				return () => clearInterval(interval);
-			}
+			// Calculate distance between current countDownDate and now
+			const now: number = Date.now();
+			distanceRef.current = countDownDateRef.current - now;
+			setDistance(distanceRef.current);
 
-			// 1 cycle is done
-			if (secondsLeftRef.current === 0) {
-				modeRef.current === Mode.WORK ? playBreakAlarm() : playWorkAlarm();
-				return switchMode();
-			}
-
-			countdownSeconds();
+			const handleSession = (
+				currentDistance: number,
+				currentMode: Mode,
+				cyclesLength: number
+			) => {
+				// All cycles are done
+				if (
+					currentDistance < 0 &&
+					currentMode === Mode.BREAK &&
+					cyclesLength - 1 === cycleNumberRef.current
+				) {
+					return endOfSession();
+				}
+				// 1 cycle is done
+				if (currentDistance < 0) {
+					return switchMode();
+				}
+			};
+			handleSession(distanceRef.current, modeRef.current, cycles.length);
 		}, 1000);
 
 		return () => clearInterval(interval);
-	}, [
-		cycles,
-		initializeTimer,
-		playBreakAlarm,
-		playWorkAlarm,
-		switchMode,
-		endOfSession,
-	]);
+	}, [cycles, initializeTimer, switchMode, endOfSession]);
 
-	// Calculate percentage
+	// Calculate percentage and time for CircularProgressbar
 	const totalSeconds: number =
-		mode === Mode.WORK
-			? cycles[cycleNumber].workMinutes * 60
-			: cycles[cycleNumber].breakMinutes * 60;
-	const percentage: number = Math.round((secondsLeft / totalSeconds) * 100);
+		(mode === Mode.WORK
+			? cycles[cycleNumber].workMinutes
+			: cycles[cycleNumber].breakMinutes) * 60;
 
-	// Calculate time
-	let minutes: number | string = Math.floor(secondsLeft / 60);
-	let seconds: number | string = secondsLeft % 60;
+	let percentage: number;
+	let minutes: number | string;
+	let seconds: number | string;
+
+	// If timer is active calculate percentage and time depending on distance
+	if (distance > 0) {
+		const distanceInSeconds = Math.floor(
+			((distance % (1000 * 60 * 60)) / (1000 * 60)) * 60
+		);
+		percentage = Math.round((distanceInSeconds / totalSeconds) * 100);
+		minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	} // Else calculate percentage and time depending on secondsLeft
+	else {
+		percentage = Math.round((secondsLeft / totalSeconds) * 100);
+		minutes = Math.floor(secondsLeft / 60);
+		seconds = secondsLeft % 60;
+	}
+
 	if (minutes < 10) minutes = `0${minutes}`;
 	if (seconds < 10) seconds = `0${seconds}`;
 
@@ -179,6 +216,7 @@ const Timer: React.FC = () => {
 					<PlayButton
 						callback={() => {
 							pauseTimer(false);
+							createNewCountDownDate();
 						}}
 					/>
 				) : (
