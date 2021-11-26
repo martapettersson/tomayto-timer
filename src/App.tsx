@@ -7,12 +7,12 @@ import SettingsContext from "./context/SettingsContext";
 import type { Cycle, ColorThemes } from "./context/SettingsContext";
 
 const App: React.FC = () => {
-	const [showSettings, setShowSettings] = useState(false);
-	const [allWorkMinutes, setAllWorkMinutes] = useState(25);
-	const [allBreakMinutes, setAllBreakMinutes] = useState(5);
+	const [showSettings, setShowSettings] = useState<boolean>(false);
+	const [allWorkMinutes, setAllWorkMinutes] = useState<number>(25);
+	const [allBreakMinutes, setAllBreakMinutes] = useState<number>(5);
 	const [customWorkTitle, setCustomWorkTitle] = useState<null | string>(null);
 	const [customBreakTitle, setCustomBreakTitle] = useState<null | string>(null);
-	const [volume, setVolume] = useState(0.5);
+	const [volume, setVolume] = useState<number>(0.5);
 	const [colorTheme, setColorTheme] = useState<ColorThemes>("purpleDream");
 
 	// Classic Pomodoro as default settings
