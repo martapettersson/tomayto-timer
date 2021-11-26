@@ -98,6 +98,9 @@ const Timer: React.FC = () => {
 				? cycles[cycleNumberRef.current].workMinutes
 				: cycles[cycleNumberRef.current].breakMinutes) * 60;
 
+		const alarmSound =
+			modeRef.current === Mode.WORK ? playBreakAlarm() : playWorkAlarm();
+
 		setMode(nextMode);
 		modeRef.current = nextMode;
 
@@ -106,8 +109,6 @@ const Timer: React.FC = () => {
 
 		createNewCountDownDate();
 
-		const alarmSound =
-			modeRef.current === Mode.WORK ? playBreakAlarm() : playWorkAlarm();
 		return alarmSound;
 	}, [cycles, playBreakAlarm, playWorkAlarm]);
 
