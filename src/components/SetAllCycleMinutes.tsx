@@ -13,21 +13,21 @@ const SetAllCycleMinutes: React.FC = () => {
 		setCycles,
 	} = useContext(SettingsContext);
 
-	const updateAllCycleMinutes = (mode: Mode) => (value: number) => {
+	const updateAllCycleMinutes = (mode: Mode) => (inputMinutes: number) => {
 		let newCyclesArray = [...cycles];
 
 		if (mode === Mode.WORK) {
-			setAllWorkMinutes(value);
+			setAllWorkMinutes(inputMinutes);
 			for (let cycle of cycles) {
-				cycle.workMinutes = value;
+				cycle.workMinutes = inputMinutes;
 			}
-			localStorage.setItem("allWorkMinutes", JSON.stringify(value));
+			localStorage.setItem("allWorkMinutes", JSON.stringify(inputMinutes));
 		} else {
-			setAllBreakMinutes(value);
+			setAllBreakMinutes(inputMinutes);
 			for (let cycle of cycles) {
-				cycle.breakMinutes = value;
+				cycle.breakMinutes = inputMinutes;
 			}
-			localStorage.setItem("allBreakMinutes", JSON.stringify(value));
+			localStorage.setItem("allBreakMinutes", JSON.stringify(inputMinutes));
 		}
 
 		localStorage.setItem("cycles", JSON.stringify(newCyclesArray));
