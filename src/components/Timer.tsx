@@ -157,8 +157,8 @@ const Timer: React.FC = () => {
 					return switchMode();
 				}
 			};
-			handleSession(distanceRef.current, modeRef.current, cycles.length);
 			countdownSeconds();
+			handleSession(distanceRef.current, modeRef.current, cycles.length);
 		}, 1000);
 
 		return () => clearInterval(interval);
