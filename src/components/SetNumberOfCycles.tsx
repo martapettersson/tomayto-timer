@@ -1,5 +1,6 @@
 import React, { useContext, useRef } from "react";
 import SettingsContext from "../context/SettingsContext";
+import type { Cycle } from "../context/SettingsContext";
 
 type Props = {
 	numberOfCycles: number;
@@ -19,8 +20,8 @@ const SetNumberOfCycles: React.FC<Props> = ({
 		if (e.target.value === "") {
 			return;
 		}
-		const inputValue: number = parseInt(e.target.value, 10);
-		setNumberOfCycles(inputValue < 1 ? 1 : inputValue);
+		const inputNumber: number = parseInt(e.target.value, 10);
+		setNumberOfCycles(inputNumber < 1 ? 1 : inputNumber);
 	};
 
 	const updateCycles = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -35,12 +36,12 @@ const SetNumberOfCycles: React.FC<Props> = ({
 		// User wants more cycles than what is currently in settingsInfo
 		if (cycles.length < numberOfCycles) {
 			for (let i = cycles.length; i < numberOfCycles; i++) {
-				const newCycleValue = {
+				const newCycleObject: Cycle = {
 					cycleNumber: i,
 					workMinutes: allWorkMinutes,
 					breakMinutes: allBreakMinutes,
 				};
-				newCycleArray.push(newCycleValue);
+				newCycleArray.push(newCycleObject);
 			}
 		}
 		localStorage.setItem("cycles", JSON.stringify(newCycleArray));
